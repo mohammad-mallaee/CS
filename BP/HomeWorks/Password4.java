@@ -1,14 +1,14 @@
 import java.util.Arrays;
+import java.util.BitSet;
 import java.util.Scanner;
 
-public class Password2 {
-
-    private static int[] primeNumbers;
-    private static boolean[] crossedOut;
+public class Password4 {
 
     public static void main(String[] args) {
         Scanner reader = new Scanner(System.in);
         double N = reader.nextInt();
+
+        long startTime = System.nanoTime();
 
         int start = (int) Math.pow(10, N - 1);
         int end = (int) Math.pow(10, N) - 1;
@@ -16,11 +16,13 @@ public class Password2 {
         primeNumbers = generatePrimeNumbersUpTo(end);
 
         for (int primeNumber : primeNumbers) {
-            if (start < primeNumber && primeNumber < end && isRemovalPrime(primeNumber)  ) {
+            if (start < primeNumber && primeNumber < end && isRemovalPrime(primeNumber)) {
                 System.out.println(primeNumber);
             }
         }
 
+        long stopTime = System.nanoTime();
+        System.out.println("Elapsed time : " + (stopTime - startTime)/1000/1000 + " ms");
     }
 
     static boolean isRemovalPrime(int number) {
@@ -45,32 +47,37 @@ public class Password2 {
         return index >= 0;
     }
 
+    private static int[] primeNumbers;
+//    private static int[] crossedOut;
+    private static BitSet crossedOut;
+
     public static int[] generatePrimeNumbersUpTo(int limit) {
-        crossedOut = new boolean[limit + 1];
-        Arrays.fill(crossedOut, false);
-        int iterationLimit = (int) Math.sqrt(crossedOut.length);
+//        crossedOut = new int[limit + 1];
+        limit++;
+        crossedOut = new BitSet(limit);
+        int iterationLimit = (int) Math.sqrt(limit);
         for (int i = 2; i <= iterationLimit; i++) {
-            if (!crossedOut[i]) {
+            if (!crossedOut.get(i)) {
                 for (int multiple = 2 * i;
-                     multiple < crossedOut.length;
+                     multiple < limit;
                      multiple += i) {
-                    crossedOut[multiple] = true;
+                    crossedOut.set(multiple);
                 }
             }
         }
-        int[] primes = new int[numberOfUncrossedIntegers()];
-        for (int j = 0, i = 2; i < crossedOut.length; i++) {
-            if (!crossedOut[i]) {
+        int[] primes = new int[numberOfUncrossedIntegers(limit)];
+        for (int j = 0, i = 2; i < limit; i++) {
+            if (!crossedOut.get(i)) {
                 primes[j++] = i;
             }
         }
         return primes;
     }
 
-    private static int numberOfUncrossedIntegers() {
+    private static int numberOfUncrossedIntegers(int limit) {
         int count = 0;
-        for (int i = 2; i < crossedOut.length; i++) {
-            if (!crossedOut[i]) {
+        for (int i = 2; i < limit; i++) {
+            if (!crossedOut.get(i)) {
                 count++;
             }
         }
