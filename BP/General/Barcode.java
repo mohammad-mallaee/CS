@@ -32,6 +32,7 @@ public class Barcode {
         for (int i = 0; i < 9; i++) {
             if (i == 0 || i == 2 || i == 6 || i == 8) {
                 squaresValidation = isValidSquare(squares[i]);
+                if (!squaresValidation) { break; }
             } else {
                 disappearedNumbers += findDisappearedNumber(squares[i]);
             }
@@ -51,7 +52,7 @@ public class Barcode {
             if (i == 4 && chars[i] == '1' ) { isValid = false; break; }
             if (i != 4 && chars[i] == '0') { isValid = false; break; }
         }
-        return  isValid;
+        return isValid;
     }
 
     static int findDisappearedNumber(String square) {

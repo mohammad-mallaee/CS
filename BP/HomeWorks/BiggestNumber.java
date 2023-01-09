@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class BiggestNumber {
     public static void main(String[] args) {
         Scanner reader = new Scanner(System.in);
-        Scanner in = new Scanner(System.in);
 
         int n = reader.nextInt();
 
