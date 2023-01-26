@@ -77,6 +77,6 @@ public class Complex {
     public static void main(String[] args) {
         Complex c = new Complex(2, 3);
         Complex d = new Complex(4, -2);
-        System.out.println(Complex.toString(c.divide(d)));
+        System.out.println(Complex.toString(c.multiply(d)));
     }
 }
