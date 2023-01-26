@@ -48,7 +48,7 @@ public class Matrix {
                 }
                 System.out.print(j == columns - 1 ? index : index + " ");
             }
-            System.out.println();
         }
+        System.out.println();
     }
 }
