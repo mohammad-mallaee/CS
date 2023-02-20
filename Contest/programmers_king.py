@@ -1,4 +1,5 @@
 line = input().split(" ")
+print(type(line))
 a = int(line[0])
 b = int(line[1])
 i = 1
