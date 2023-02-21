@@ -23,7 +23,9 @@ public class UniqueRecovery {
         a[0] = d[0];
         StringBuilder answer = new StringBuilder();
         for (int i = 1; i < d.length; i++) {
-            if (a[i - 1] > d[i] && d[i] != 0) {
+            int ai1 = a[i - 1] + d[i];
+            int ai2 = a[i - 1] - d[i];
+            if (ai1 >= 0 && ai2 >= 0 && ai1 != ai2) {
                 return "-1";
             }
             a[i] = d[i] + a[i - 1];
