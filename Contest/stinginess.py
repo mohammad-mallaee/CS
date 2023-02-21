@@ -5,8 +5,10 @@ a = int(inputs[2])
 b = int(inputs[3])
 
 if b / m < a:
-    m_prices = (n // m) * b
-    r_prices = (n - (m * (n // m))) * a
-    print(m_prices + r_prices)
+    b_count = n // m
+    a_count = n - (b_count * m)
+    price = b_count * b
+    price += a_count * a if a_count * a < b else b
+    print(price)
 else:
     print(n * a)
