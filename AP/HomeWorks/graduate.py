@@ -7,4 +7,4 @@ for i in range(courses_counts):
     credits += credit
     grades += grade * credit
 
-print(int(grades / credits))
+print(grades / credits)
