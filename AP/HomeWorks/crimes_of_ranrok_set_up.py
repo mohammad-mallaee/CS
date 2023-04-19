@@ -53,7 +53,7 @@ def parse_account_lines(lines):
 
 
 def get_accounts_by_string():
-    print("\nEnter scrambled accounts string:")
+    print("Enter scrambled accounts string:")
     accounts_str = input()
     print("Enter balances string:")
     balances_str = input()
@@ -67,8 +67,10 @@ def get_accounts():
             if len(account_lines) != 0 and confirm("\nDo you want to use the existing database? "):
                 return parse_account_lines(account_lines)
             else:
+                print("\nCouldn't Find any database!")
                 return get_accounts_by_string()
     except EnvironmentError:
+        print("\nCouldn't Find any database!")
         return get_accounts_by_string()
 
 
@@ -121,7 +123,6 @@ def deposit_money(account_number, accounts):
             continue
         money = float(money)
         accounts[account_number] += money
-        save_accounts(accounts)
         print("Your balance is now:", accounts[account_number])
         if not confirm():
             return
@@ -144,7 +145,6 @@ def withdraw_money(account_number, accounts):
             continue
 
         accounts[account_number] -= money
-        save_accounts(accounts)
         print("Your balance is now:", accounts[account_number])
 
         if not confirm():
@@ -171,7 +171,6 @@ def transfer_money(account_number, accounts):
             continue
         accounts[account_number] -= money
         accounts[number] += money
-        save_accounts(accounts)
         print("Money transferred successfully.")
         print("Your balance is now :", accounts[account_number])
         if not confirm():
@@ -182,7 +181,6 @@ def close_account(account_number, accounts):
     print("\nYou can't access your account or money after closing your account.")
     if confirm("Do you want to close your account (yes/no)? "):
         del accounts[account_number]
-        save_accounts(accounts)
         print("Account number", account_number, "is now closed and inaccessible.")
 
 
@@ -204,7 +202,6 @@ def start():
     print("|      Gringotts Wizarding Bank      |")
     print("--------------------------------------")
     accounts = get_accounts()
-    save_accounts(accounts)
     services_count = 0
     while services_count < 10:
         services_count += 1
@@ -221,6 +218,9 @@ def start():
                 break
 
     print("\nSorry, Gringotts is closed for the day. See you tomorrow!")
+    if confirm("Do you want to save the changes? "):
+        save_accounts(accounts)
+        print("Changes have been saved.")
 
 
 start()
