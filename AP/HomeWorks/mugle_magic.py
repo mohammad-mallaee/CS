@@ -18,7 +18,7 @@ for _ in range(n):
     is_password_valid = validate_password(password)
     result_str = "invalid"
     if is_email_valid and is_password_valid:
-        result.append("True")
+        result.append("true")
         continue
     if not is_email_valid:
         result_str += "_email"
