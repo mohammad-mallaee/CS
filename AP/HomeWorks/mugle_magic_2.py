@@ -2,11 +2,12 @@ import re
 
 
 def validate_email(email):
-    return re.match(r"\w+@(\w+\.)+\w{2,7}", email) is not None
+    match = re.match(r"\w+@\w+\.([a-zA-Z]){2,7}", email)
+    return match is not None and match.group() == email
 
 
 def validate_password(password):
-    pattern = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[+-\/*()\[\]\&%@$#!~?-^])[A-Za-z\d+-\/*()\[\]\&%@$#!~?-^]{8,}"
+    pattern = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d+-\/*()\[\]\&%@$#!~?-^]{8,}"
     return re.match(pattern, password) is not None
 
 
