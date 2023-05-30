@@ -152,8 +152,7 @@ while True:
         turn = 'X'
 
     winner = who_win()
-    game_ended = False
-    game_ended = True if winner is not None else game_ended
+    game_ended = True if winner else False
     game_ended = True if x_turns == 0 and y_turns == 0 else game_ended
 
     if game_ended:
