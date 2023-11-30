@@ -1,0 +1,464 @@
+\documentclass{article}
+
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xepersian}
+
+\setlength{\textwidth}{5.5in}
+
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\algrenewcommand{\algorithmicrequire}{\textbf{Input:}}
+\algrenewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\settextfont{Vazirmatn}
+\date{\today}
+\title{تمرینات ۲}
+\author{محمد ملائی، محسن محمودآبادی، داوود نصرتی امیرآبادی}
+\begin{document}
+\begin{center}
+    {محمد ملائی،  محسن محمودآبادی،  داوود نصرتی امیرآبادی}
+\end{center}
+\pagebreak
+\section{تمرین}
+\subsection{الف}
+sometimes
+الگوریتمی که در صورت سوال به عنوان نمونه و ورودی داده شده است تنها به یک تغییر جزئی در 
+مقدار خروجی خود دارد تا به جواب بخش الف تمرین دست پیدا کند. در واقع چون الگوریتم اندیس نویسه ی اول رشته را 
+برمی گرداند، با داشتن طول نویسه می توان به آخرین نویسه ی رشته دست پیدا کرد و اندیس آن را 
+به عنوان خروجی بازگرداند.
+\begin{latin}
+    \begin{algorithm}
+        \caption{Last-Index}
+        \begin{algorithmic}
+            \Require An array T[0...n-1] of n characters representing a text
+            and an array $P[0...m-1]$ representing a pattern
+            \Ensure The index of last character in text that ends a matching substring or -1 if the search is unsuccessful
+            \For{$ i = 0 \; to \; n-m$}
+                \State j = 0
+                \While {$j < m \; and \; P[j] = T[i+j]$}
+                    \State j = j + 1
+                \EndWhile
+                \If{$j=m$}
+                    \State \Return $ i + m - 1$
+                \EndIf
+            \EndFor
+            \State \Return -1
+        \end{algorithmic}
+    \end{algorithm}
+\end{latin}
+\subsection{ب}
+با توجه به خواسته ی مسئله،
+ابتدا به اندازه ی طول الگو به سمت راست حرکت کرده و سپس یکی یکی به سمت چپ
+حرکت می کنیم.  در پایان در صورت عدم موفقیت آمیز بودن جستجو، از نویسه ی بعدی پیمایش را آغاز می کنیم.
+\begin{latin}
+    \begin{algorithm}
+        \caption{RTL-Check}
+        \begin{algorithmic}
+            \Require An array T[0...n-1] of n characters representing a text
+            and an array $P[0...m-1]$ representing a pattern
+            \Ensure The index of last character in text that ends a matching substring or -1 if the search is unsuccessful
+            \For{$ i = 0 \; to \; n-m$}
+                \State j = m - 1
+                \While {$j > 0\; and \; P[j] = T[i+j]$}
+                    \State j = j - 1
+                \EndWhile
+                \If{$j=0$}
+                    \State \Return $ i $
+                \EndIf
+            \EndFor
+            \State \Return -1
+        \end{algorithmic}
+    \end{algorithm}
+\end{latin}
+
+\pagebreak
+\subsection{پ}
+در اینجا متغیری به نام 
+$count$
+تعریف می کنیم و بار هر بار شناسایی کامل الگو، یک واحد آن را افزایش می دهیم.
+در ضمن، پس از یافتن الگو به طور کامل، به اندازه ی طول الگو به سمت جلو حرکت می کنیم و 
+پیمایش را از آنجا آغاز می نماییم تا از یافتن الگوهای دارای اشتراک جلوگیری کرد.
+\begin{latin}
+    \begin{algorithm}
+        \caption{Count}
+        \begin{algorithmic}
+            \Require An array T[0...n-1] of n characters representing a text
+            and an array $P[0...m-1]$ representing a pattern
+            \Ensure Number of pattern occurrences in text
+            \State i = 0
+            \State count = 0
+            \While{$ i < n-m$}
+                \State j = m - 1
+                \While {$j > 0\; and \; P[j] = T[i+j]$}
+                    \State j = j - 1
+                \EndWhile
+                \If{$j=0$}
+                    \State $ i = i + m$
+                    \State $ count = count + 1$
+                \EndIf
+            \EndWhile
+            \State \Return count
+        \end{algorithmic}
+    \end{algorithm}
+\end{latin}
+
+\subsection{ت‌}
+با توجه به اینکه کارایی زمانی الگوریتم باید
+O(n)
+باشد ، باید نهایتا از یک حلقه استفاده کنیم که تمام کاراکتر های متن را فقط یک بار بررسی می کند.
+در این الگوریتم، متن و الگو همزمان و با یک متغیر ( i )
+بررسی می شوند و با هر بار مقایسه j افزایش می یابد
+که نشانگر تطابق آن بخش از رشته و الگوست که رسیدن آن به اندازه الگو به معنی یافتن زیر رشت های یکسان با الگو است.
+ پس از یافتن تطابق مکان آخرین کاراکتر این زیر رشته به عنوان خروجی الگوریتم برگردانده می شود.
+\begin{latin}
+    \begin{algorithm}
+        \caption[short]{Linear-Index}
+        \begin{algorithmic}
+            \Require An array T[0...n-1] of n characters representing a text
+            and an array $P[0...m-1]$ representing a pattern
+            \Ensure The index of last character in text that ends a matching substring or -1 if the search is unsuccessful
+            \State j = 0
+            \For{$ i = 0 \; to \; n$}
+                \If{T[i] = P[j]}
+                    \State j = j + 1
+                \Else
+                    \State j = 0
+                \EndIf
+
+                \If {j = m}
+                    \State \Return i
+                \EndIf
+            \EndFor
+            \State \Return -1
+        \end{algorithmic}
+    \end{algorithm}
+\end{latin}
+
+\pagebreak
+
+\section{تمرین}
+\subsection{الف}
+از آنجایی که تعداد اعمال انتساب و تقسیم با هم برابر است تعداد تکرار عمل انتساب را در نظر می گیریم
+برای محاسبات تعداد مراحل انجام شده و از آنجا که 
+$m \,\, mod \,\, n$
+می تواند حداکثر نصف 
+$n$
+باشد و در بدترین حالت کارایی زمانی برابر است با :
+$$\gcd(m, n) = \gcd(n, \frac{n}{2}) = \gcd(\frac{n}{2}, \frac{n}{4}) =... = \gcd(\frac{n}{n^{n-2}}, \frac{n}{n^{n-1}})$$
+که 
+$\frac{n}{n^{n-1}} = 1$
+و حلقه ی
+while
+به پایان می رسد.
+پس داریم:
+$$n-1 = \log_2^n \Rightarrow n = \log_2^n + 1 \Rightarrow \lim_{n \rightarrow \infty} \frac{\log_2^n + 1}{\log_2^n} = 1 \Rightarrow \log_2^n + 1 \in O(\log_2^n)$$
+
+\subsection{ب}
+برای ثابت کردن این رابطه بازگشتی، ما می‌توانیم از اصل استقرا استفاده کنیم. برای این کار، 
+ابتدا باید ثابت کنیم که این رابطه بازگشتی برای دو عدد صحیح مثبت درست است. سپس، فرض کنید که
+این رابطه بازگشتی برای 
+$n-1$
+عدد صحیح مثبت درست است. بنابراین،
+\begin{align}
+    \gcd(a_1, a_2, \ldots, a_n) &= \gcd(\gcd(a_1, \ldots, a_{n-1}), gcd(a_n)) \\
+                            &= \gcd(\gcd(\gcd(a_1, \ldots, a_{n-2}), a_{n-1}), a_n)\\
+                            &=\ldots \\
+                            &= \gcd(\gcd(...(\gcd(a_1, a_2), a_3), a_3), \ldots, a_{n})
+\end{align}
+که این رابطه بازگشتی بدون توجه به ترتیب اعداد ورودی، همیشه درست است.
+
+الگوریتم پایین به محاسبه 
+$\gcd$
+دو عدد می پردازد.
+
+\subsection{پ}
+\begin{latin}
+    \begin{algorithm}[H]
+        \caption{gcd(a, b)}
+        \begin{algorithmic}
+            \Require a, b are two integers to find gcd
+            \Ensure Greatest Common Devisor of a and b
+                \While{y != 0}
+                    \State x, y = y, (x $mod$ y)
+                \EndWhile
+                \State \Return x
+        \end{algorithmic}
+    \end{algorithm}
+\end{latin}
+
+
+الگوریتم پایین با کمک الگوریتمی که در بالا معرفی شد،
+در هر مرحله در صورت وجود لیستی با طول بیش از ۲،
+به محاسبه ی 
+$\gcd$
+\underline{عضو اول لیست}
+و
+\underline{باقی اعضای لیست}
+می پردازد و مقدار حاصل را بر می گرداند.
+\begin{latin}
+    \begin{algorithm}[H]
+        \caption{super\_gcd($A[a_0, a_1, \ldots, a_{n-1}$])}
+        \begin{algorithmic}
+            \Require A: A list of n integers
+            \Ensure gcd of all the elements of A
+                \If{len(a) == 2}
+                    \State \Return gcd(a[0], a[1])
+                \Else 
+                    \State \Return $gcd(a[0], super\_gcd(A[a_1, a_2, \ldots, a_{n-1}]))$
+                \EndIf
+        \end{algorithmic}
+    \end{algorithm}
+\end{latin}
+
+با توجه به اینکه کارایی الگوریتم 
+$\gcd$
+برابر با 
+$\log_2(n)$
+است و هربار یک عدد از لیست ما کاسته می شود، 
+و این کار 
+$n$
+بار انجام می شود،
+پس کارایی زمانی الگوریتم ما از مرتبه ی 
+$n\log_2(n)$
+می باشد.
+یا به عبارتی:
+    \begin{align}
+        M(2) = \log_2(n)\\
+        M(n) = \\
+        &= \log_2(n) + M(n - 1) \\
+        &= 2\log_2(n) + M(n - 2) \\
+        &= i \log_2(n) + M(n - i) \\
+        &= (n-1)log_2(n) \\
+        \rightarrow M(n) \in \Theta(n.log_2(n))
+    \end{align}
+
+\section{تمرین}
+\subsection{الف}
+برای محاسبه جواب این مسئله به روش ساده اندیشانه، ابتدا تمام زیر مجموعه های مجموعه S را ساخته و سپس
+بزرگترین زیرمجموعه ای که در شرط مسئله صدق کند را به عنوان جواب مسئله انتخاب می کنیم یعنی :
+
+$$Space = \{A \in S| \not\exists 1 \le j \le n : A_j \le A_i \le F_j \}$$
+
+بزرگترین عضو مجموعه Space
+از نظر تعداد عضو، جواب مسئله خواهد بود.
+
+\begin{latin}
+    \begin{algorithm}
+        \caption{GreatestSubset}
+        \begin{algorithmic}
+            \Require Sets S = $\{s_1, s_2, ..., s_n\}$ and F = $\{ f_1, f_2, .., f_n\}$
+            \Ensure Set A = $\{a_1, a_2, ..., a_m\}$ which is a subset of S
+            \State A = $\{\}$
+            \For{$X = \{x_1, x_2, .., x_q\}$ in Subsets of \{1, 2, ..., n\}}
+                \If {q > m}
+                    \State iEqual = True
+                    \For{$i = 1$ to $q$}
+                        \State jEqual = True
+                        \For{$j = 1$ to $q$}
+                            \If {$x_j \not = x_i \; And \; s_{x_j} \le s_{x_i} \leq f_{x_j} $}
+                                \State jEqual = False
+                                \State break
+                            \EndIf
+                        \EndFor
+                        \If{$jEqual = False$}
+                            \State iEqual = False
+                            \State break
+                        \EndIf
+                    \EndFor
+                    \If{iEqual = True}
+                        \State A = X
+                    \EndIf
+                \EndIf
+            \EndFor
+            \Return A
+        \end{algorithmic}
+    \end{algorithm}
+\end{latin}
+\pagebreak
+\subsection{ب}
+برای پیدا کردن جواب این مسئله به $2^n$
+زیر مجموعه از S
+نیازمندیم که برای بررسی شرط مسئله برای هرکدام از آنها، دو حلقه For
+که هر یک سه مقایسه انجام می دهند. بنابراین با فرض اینکه هر کارایی زمانی ساخت هر زیرمجموعه
+$\Theta(1)$
+باشد داریم :
+
+\begin{align}
+    M(n) &= \sum_{i=1}^{n} {\binom{n}{i}} \sum_{j=1}^{i} \sum_{k=1}^{n} 3 \\
+    &= \sum_{i=1}^{n} {\binom{n}{i}} \sum_{j=1}^{i} 3n \\
+    &= \sum_{i=1}^{n} {\binom{n}{i}} 3(i)(n) \\
+    &= {3n}\sum_{i=1}^{n} { (i) \binom{n}{i}} \\
+    &= 3n^2 * 2^{n-1} \\
+    &\Rightarrow M(n) \in O(n^2*2^n)
+\end{align}
+
+\pagebreak
+
+\section{تمرین}
+\subsection{الف - ساختار داده}
+با اجرای الگوریتم و دادن دنباله به عنوان ورودی تابع get\_data\_structe
+، خروجی یک ماتریس $n \times n$
+خواهد بود که درایه $ij$ آن کوچکترین مقدار محدوده بین i و j خواهد بود.
+
+\begin{latin}
+\begin{lstlisting}[language=Python, caption=Python Implementation]
+def get_min_of_slice(list, start, end):
+    minimum = list[start]
+    for k in range(start, end + 1):
+        minimum = list[k] if list[k] < minimum else minimum
+    return minimum
+
+def get_data_structure(list):
+    list_size = len(list)
+    Matrix = [[0] * list_size for _ in range(list_size)]
+    for i in range(0, len(list)):
+        for j in range(i + 1):
+            min_ij = get_min(list, j, i)
+            Matrix[j][i] = min_ij
+            Matrix[i][j] = min_ij
+    return Matrix
+\end{lstlisting}
+\end{latin}
+
+\subsection{ب - تحلیل کارایی}
+M(n) را تعداد مقایسه های الگوریتم در نظر می گیریم
+و داریم :
+\begin{align}
+    M(n) &= \sum_{i=0}^{n}\sum_{j=0}^{i}\sum_{k = j}^{i} 1 \\
+    &= \sum_{i=0}^{n}\sum_{j=0}^{i} i-j+1 \\
+    &= \sum_{i=0}^{n} \left( \sum_{j=0}^{i}i - \sum_{j=0}^{i}j + \sum_{j=0}^{i} 1  \right) \\
+    &= \sum_{i=0}^{n} \left( i^2 - \frac{i(i+1)}{2} + (i + 1) \right) \\
+    &= \sum_{i=0}^{n} \frac{1}{2}i^2 + \frac{1}{2}i + 1 \\
+    &= \frac{1}{2}\sum_{i=0}^{n} i^2 + \frac{1}{2} \sum_{i=0}^{n}i + \sum_{i=0}^{n}1 \\
+    &= \frac{1}{12}n(n+1)(2n+1) + \frac{1}{2}n(n+1) + n+1 \\
+    &= \frac{1}{6}n^3 + \frac{3}{4}n^2 + \frac{19}{12}n + 1 \\
+    &\Rightarrow M(n) \in \Theta(n^3)
+\end{align}
+
+
+\pagebreak
+\section{تمرین}
+الگوریتم را به سه بخش تقسیم می‌کنیم. ابتدا لیست
+$m$
+تایی ورودی را به لیست مجاورت تبدیل کرده و سپس به جستجوی عمیق در گراف پرداخته، در نهایت با اجرای پیمایش عمیق به یافتن جواب می‌پردازیم.
+
+برای ساخت لیست مجاورت، یک آرایه‌ی
+$n$
+عضوی می‌سازیم. 
+در اندیس
+$0$
+ام آرایه، آرایه هایی به شکل
+$[v, e]$
+قرار می‌دهیم که در آن 
+$v$
+نشان دهنده کامپیوتری است که کامپیوتر صفرم به آن متصل است و
+$e$
+زمانی است که در آن، کامپیوتر صفرم به کامپیوتر
+$v$ ام 
+متصل می‌شود.
+
+برای انجام این کار، در لیست ورودی پیمایش می‌کنیم.
+\begin{latin}
+    \begin{algorithm}[H]
+    \caption{graph\_adjacency(connections)}
+        \begin{algorithmic}
+            \Require a connection list, containing $m$ lists of [$C_i$, $C_j$, $t_k$]
+            \Ensure An Adjacency list of the graph
+            \State m = len(connections)
+            \State adjacency = [[\, \,] for \_ in range(m)]
+            \For {$C_i$, $C_j$, $t_k$ in graph}
+                \State adjacency[$C_i$ - 1].append([$C_j - 1$, $t_k$])
+                \State adjacency[$C_j$ - 1].append([$C_i - 1$, $t_k$])
+                
+            \EndFor
+            \State return $adjacency$
+        \end{algorithmic}
+    \end{algorithm}
+\end{latin}
+
+
+
+الگوریتم زیر، نحوه‌ی انجام پیمایش عمیق در لیست مجاورت را نشان می‌دهد.
+لازم به ذکر است که در هر مرحله از انجام پیمایش، لازم است تا سه شرط مورد بررسی قرار گیرند.
+\begin{enumerate}
+    \item 
+    راسی که قصد مشاهده آن را داریم در لیست راس های آلوده نباشد.
+    \item 
+    زمان ارتباط با راس بعدی، بیشترمساوی زمان شیوع ویروس و کمترمساوی زمان پایان بررسی باشد.
+    \item 
+    زمان ارتباط با راس بعدی، حتما بیشترمساوی زمان ارتباط راس قبلی با راس فعلی باشد.‌
+\end{enumerate}
+
+\begin{latin}
+    \begin{algorithm}[H]
+    \caption{dfs(graph, start\_node, last\_traveled\_time, infected\_devices)}
+        \begin{algorithmic}
+            \Require $graph$: The adjacency list of the graph, $start\_node$: The start of search, $last\_traveled\_time$: The time at which the $start\_node$ has been infected, $infected\_computers$: The list of infected computers by the time of the search
+            \Ensure Returns None, but modifies the $infected\_computers$ list
+            
+            \For{$neighbor$ in $graph$[$start\_node$]}
+                \State $neighbor\_id$, $neighbor\_time$ = $neighbor$
+                \State $con\_1$ = $neighbor\_id$ not in $infected\_computers$
+                \State con\_2 = $x \leq neighbor\_time \leq y$
+                \State $con\_3$ = $neighbor\_time \geq last\_traveled\_time$
+                    \If{con\_1 and con\_2 and con\_3}
+                        \State infected\_computers.add(neighbor\_id)
+                        \State dfs(graph, neighbor\_id, neighbor\_time)
+                    \EndIf
+            \EndFor
+        \end{algorithmic}
+    \end{algorithm}
+\end{latin}
+
+                    
+
+
+در نهایت با ایجاد یک لیست از کامپیوتر های آلوده، بررسی می‌کنیم که آیا کامپیوتر 
+$j$
+ام در لیست وجود دارد یا خیر.
+
+\begin{latin}
+    \begin{algorithm}[H]
+    \caption{is\_virus\_there$graph, C_i, C_j, x, y$)}
+        \begin{algorithmic}
+            \Require $graph$: The adjacency list of the graph, $C_i$: The first computer infected, $C_j$: The target computer, $x$: The time of first infection, $y$: The end of check time
+            \Ensure True if $C_j$ is infected, False otherwise
+            
+            \State infected\_computers = [\, \,]
+            
+            \State dfs(graph, $C_i$, 0, infected\_computers)
+                
+            \State $C_j$ in infected\_computers
+        \end{algorithmic}
+    \end{algorithm}
+\end{latin}
+
+\end{document}
