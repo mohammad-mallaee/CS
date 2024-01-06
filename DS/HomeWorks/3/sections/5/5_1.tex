@@ -1,0 +1,85 @@
+\documentclass{article}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\settextfont{XB Niloofar}
+
+\begin{document}
+
+برای اضافه کردن نقطه جدید، باید نقاطی را بیابیم که در پوسته ایجاد شده به این نقطه متصل اند.
+    این کار را با دانستن این نکته که اگر دو نقطه جزئی از پوسته محدب باشند، آنگاه تمام نقاط مرزی این پوسته
+    در طرف دیگر خط گذرنده از این دو نقطه خواهند بود انجام خواهیم داد.
+    
+    همان طور که در صورت سوال نیز یادآوری شده است، پس از اضافه کردن این نقطه ممکن است تعدادی از نقاط درون این پوسته قرار گیرند
+    که باید آن ها را از لیست نقاط مرزی حذف کنیم.
+    این کار را با بررسی نقاط دیگر این پوسته انجام می دهیم به طوری که اگر p1 و p2
+    نقاطی باشند که در قسمت قبل پیدا کرده ایم، آنگاه اگر یکی از نقاط مرزی، سمت راست خط گذرنده از این دو نقطه باشد
+    باید آن را حذف کنیم زیرا درون مثلثی از نقاط مرزی خواهند بود.
+
+    \begin{latin}
+        \begin{algorithm}[H]
+            \caption{GetOrientation}
+            \begin{algorithmic}
+                \Require Points $P_1, P_2$ and Q
+                \Ensure Orientation of Q with respect to $P_1$ and $P_2$
+                \\ 1: Right or top
+                \\ 2: Bottom or left
+                \\ 0: In the same line
+                \State A = $P_1P_2$
+                \State B = $P_1Q$
+                \State \Return $sign(A \times B)$
+                
+            \end{algorithmic}
+        \end{algorithm}
+    \end{latin}
+
+    \begin{latin}
+        \begin{algorithm}[H]
+            \caption{IsBoundaryLine}
+            \begin{algorithmic}
+                \Require Points $Q_1, Q_2$ and List Of Points $P = \{p_1, p_2,..., p_n\}$
+                \Ensure Boolean representing if $Q_1Q_2$ is a boundary line or not
+                \State orientation = GetOrientation($Q_1, Q_2, P_1$)
+                \For {each point $p$ in P}
+                    \If {orientation * GetOrientation($Q_1, Q_2, p$) < 0}
+                        \State \Return false
+                    \EndIf
+                \EndFor
+                \State \Return true
+            \end{algorithmic}
+        \end{algorithm}
+    \end{latin}
+
+    \begin{latin}
+        \begin{algorithm}[H]
+            \caption{GetConvexHull}
+            \begin{algorithmic}
+                \Require A list of points $P = \{(x_1, y_1), (x_2, y_2),..., (x_n, y_n)\}$
+                \Ensure Convex Hull of $P$
+                \State P = sortByX(P)
+                \State boundaryPoints = $\{p_1, p_2, p_3\}$
+                \For {each p in P from $p_4$ to $p_n$}
+                    \State connectedPoints = \{\}
+                    \For{each point $b$ in boundaryPoints}
+                        \If {IsBoundaryLine(p, b)}
+                            \State connectedPoints.append(b)
+                        \EndIf
+                    \EndFor
+                    \For {each point $c$ in boundaryPoints}
+                        \State orientation = GetOrientation(connectedPoints[0], connectedPoints[1], c)
+                        \If{c is not in connectedPoints and orientation > 0}
+                            \State boundaryPoints.remove(c)
+                        \EndIf
+                    \EndFor
+                    \State boundaryPoints.append(p)
+                \EndFor
+                \State \Return boundaryPoints
+            \end{algorithmic}
+        \end{algorithm}
+    \end{latin}
+
+
+\end{document}

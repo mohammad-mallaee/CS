@@ -1,0 +1,51 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\settextfont{XB Niloofar}
+
+\begin{document}
+
+\begin{latin}
+    \begin{algorithm}[H]
+        \caption*{Sort($A[i \ldots j]$)}
+        \begin{algorithmic}
+            \Require Subarray of array $A[0 \ldots n-1]$, defined by its indices $i ^ j$
+            \Ensure Subarray $A[i \ldots j]$ sorted in non-decreasing order 
+            \State n = j - i + 1
+            \If{$n = 2 \; and \; A[i] > A[j]$}
+                \State swap(A[i], A[j])
+            \ElsIf{$n>2$}
+                \State $m = \lfloor n / 3 \rfloor$
+                \State $Sort(A[i \ldots j - m])$
+                \State $Sort(A[i + m \ldots j])$
+                \State $Sort(A[i \ldots j - m])$
+            \EndIf
+        \end{algorithmic}
+    \end{algorithm}
+\end{latin}
+
+
+\textbf{الف)}
+ثابت کنید که این الگوریتم، به درستی آرایه ورودی خود،
+$A[0 \ldots n-1]$
+را مرتب می‌کند.\\
+\textbf{ب)}
+با تشکیل و حل یک رابطه بازگشتی برای شمارش تعداد عملیات مقایسه الگوریتم،
+کارایی زمانی آن را تعیین کنید.\\
+\textbf{پ)}
+ثابت کنید که تعداد عملیات جابه‌جایی الگوریتم حداکثر
+$\frac{n(n-1)}{2}$
+است.
+
+
+\end{document}

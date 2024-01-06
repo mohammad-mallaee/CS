@@ -1,0 +1,24 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\settextfont{XB Niloofar}
+
+\begin{document}
+بد ترین حالت در این الگوریتم زمانی اتفاق می افتد که آرایه نزولی باشد.
+در مرحله دوم همین اتفاق برای عناصر یک سوم میانی و یک سوم پایانی رخ خواهد داد و در آخر همین اتفاق
+برای یک سوم ابتدایی و میانی می افتد. بدین ترتیب هر دو عنصر ای آرایه دقیقا یکبار
+باهم جابجا می شوند که داریم :
+$$\binom{n}{2} = \frac{n(n-2)}{2}$$
+بنابراین حداکثر تعداد جابجایی های الگوریتم $\frac{n(n-1)}{2}$ خواهد بود.
+\end{document}

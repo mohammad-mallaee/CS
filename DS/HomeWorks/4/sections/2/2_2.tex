@@ -1,0 +1,64 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\settextfont{XB Niloofar}
+
+\begin{document}
+برای حل این مسئله می توانیم از الگوریتم جستجوی سطح-ترتیب استفاده کنیم و گره ها را به ترتیب
+در هر سطح چاپ کنیم.
+برای این کار از صف استفاده می کنیم که اولین عضو آن ریشه با عمق صفر است.
+درون حلقه فرزندان ریشه را به صف اضافه کرده و آن ها عمق یک را نسبت می دهیم تا در تکرار های بعدی
+همراه با عمقشان چاپ شوند.
+این روند را برای هر گره تکرار می کنیم تا به برگ ها برسیم و پیمایش سطح ترتیب به اتمام برسد.
+\begin{latin}
+    \begin{algorithm}[H]
+        \caption*{PrintLevelOrder($root$)}
+        \begin{algorithmic}
+            \Require Root of tree T
+            \Ensure Prints all nodes and their depth
+            \State queue = [ ]
+            \State root.depth = 0
+            \State append root to the queue
+            \While{queue is not empty}
+                \State $node = queue.pop()$
+                \State print node value and its depth
+                \If{node has left child}
+                \State node.left.depth = node.depth + 1
+                \State append node left child to queue
+                \EndIf
+                \If{node has right child}
+                \State node.right.depth = node.depth + 1
+                \State append node right child to queue
+                \EndIf
+            \EndWhile
+        \end{algorithmic}
+    \end{algorithm}
+\end{latin}
+\begin{latin}
+    \begin{lstlisting}[language=Python, caption=Python Implementation]
+def print_depths(root):
+    queue = []
+    queue.append((root, 0))
+
+    while len(queue) > 0:
+        (node, depth) = queue.pop(0)
+        print(node.data, depth)
+        if node.right:
+            queue.append((node.right, depth + 1))
+        if node.left:
+            queue.append((node.left, depth + 1))
+    \end{lstlisting}
+\end{latin}
+این الگوریتم تمام گره های درخت را یک بار و فقط یک بار بررسی و چاپ می کند بنابراین
+کارایی زمانی آن $\theta(n)$ خواهد بود.
+\end{document}

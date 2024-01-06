@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{xepersian}
+\settextfont{XB Niloofar}
+
+\begin{document}
+
+با توجه به اینکه کارایی زمانی الگوریتم باید
+$O(\log n)$
+باشد، به نظر می رسد که با نوعی الگوریتم جستجوی دودویی مواجه
+هستیم که در هر مرحله از اجرا، فضای جستجو رو نصف می کند.
+
+\begin{latin}
+    \begin{algorithm}[H]
+        \caption*{find\_biggest(A)}
+        \begin{algorithmic}
+            \Require a list $A[0, \ldots, n-1]$ containing $n$ numbers
+            \Ensure returns maximum
+            \State $left$ = 0
+            \State $right$ = len($A$) - 1
+            \While {$left \leq right$}
+                $middle = (left + right) // 2$
+                \If {$middle ==$ 0}
+                    \State return max(A[0], A[1])
+                \ElsIf {$middle ==$ len($A$) - 1}
+                    \State return max($A[middle - 1]$, $A[middle]$)
+                \ElsIf {$A[middle -1] < A[middle] > A[middle + 1]$}
+                    \State return $A[middle]$
+                \ElsIf {$A[middle -1] < A[middle] < A[middle + 1]$}
+                    \State $left = middle + 1$
+                \ElsIf {$A[middle -1] > A[middle] > A[middle + 1]$}
+                    \State $right = middle - 1$
+                \EndIf
+            \EndWhile
+        \end{algorithmic}
+    \end{algorithm}
+\end{latin}
+
+الگوریتم فوق تا حدود زیادی مشابه الگوریتم جستجوی دودویی است.
+به طور کلی، در هر مرحله عضو مورد نظر را با عنصر قبلی و بعدی اش مقایسه
+کرده و در صورتی که از هر دو بیشتر باشد، آن را به عنوان عنصر ماکسیمم
+معرفی می کنیم.
+اما در صورتی که اشاره گر
+$middle$
+روی عنصری قرار بگیرد که در شیب صعودی قرار دارد،
+اشاره گر سمت چپ را به عنصر بعدیِ
+$middle$
+منتقل می کنیم.
+(چون اولا مطمئن هستیم خود
+$middle$
+جواب مسئله نیست، و دوما می دانیم جواب قطعا بعد از
+$middle$
+قرار دارد. چون روی شیب صعودی قرار گرفته ایم ولی هنوز به
+ماکسیمم نرسیده ایم
+)
+به همین شکل، در صورتی که اشاره گر
+$middle$
+روی عناصر با شیب نزولی قرار بگیرد، اشاره گر
+$right$
+روی عنصر قبلیِ
+$middle$
+قرار می گیرد
+(چون اولا مطمئن هستیم خود
+$middle$
+جواب مسئله نیست، و دوما می دانیم جواب قطعا قبل از
+$middle$
+قرار دارد. چون روی شیب نزولی قرار گرفته ایم و ماکسیمم را رد کرده ایم
+)
+همچنین، در صورتی که اشاره گر
+$middle$
+روی اولین را آخرین عنصر قرار بگیرد، می دانیم که فاصله
+$left$
+و
+$right$
+یک واحد است و صرفا دو عنصر برای مقایسه باقی مانده اند، پس ماکسیمم آنها
+را به عنوان جواب مسأله باز می گردانیم.
+
+از طرفی، چون هر بار بازه، مسأله را به دو نیم تقسیم کرده و یک نیم را
+در نظر نمی گیریم، و عمل پایه را مقایسه در نظر می گیریم،
+چون تعداد ثابتی عمل پایه ای داریم، کارایی زمانی الگوریتم مضربی ثابت از
+$O(\log n)$
+خواهد بود که با توجه به در نظر نگرفتن ثوابت، کارای زمانی الگوریتم همان
+$O(\log n)$
+خواهد بود.
+\end{document}

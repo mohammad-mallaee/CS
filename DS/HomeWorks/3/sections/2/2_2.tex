@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage{caption}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{xepersian}
+\settextfont{XB Niloofar}
+
+\begin{document}
+    قسمت ب را نیز مشابه با قسمت الف می توانیم حل کنیم، با این تفاوت که پیمایش
+    گراف را از راس نشان دهنده شهرداری شروع کرده و مولفه همبندی گراف را که شامل این راس است را پیدا کرده و سپس
+    با پیمایش گراف ترانهاده آن، قویا همبند بودن آن را بررسی می کنیم.
+    \begin{latin}
+        \begin{algorithm}[H]
+            \caption{GetConnectedComponent}
+            \begin{algorithmic}
+                \Require Graph G = <V, E> which is traversed by dfs algorithm, Vertex v
+                \Ensure Connected Component of G which includes v
+                \State connectedComponent = $<V_2, E_2>$
+                \For{each vertex v in V}
+                    \If{v is marked with 0}
+                        \State add $v$ to $V_2$ and its edges to $E_2$
+                    \EndIf
+                \EndFor
+                \State \Return connectedComponent
+                
+            \end{algorithmic}
+        \end{algorithm}
+    \end{latin}
+
+    \begin{latin}
+        \begin{algorithm}[H]
+            \caption{IsStronglyConnected}
+            \begin{algorithmic}
+                \Require Graph G = <V, E>, Vertex v
+                \Ensure Boolean representing if the connected component of G which includes v is strongly connected or not
+                \State $G_1$ = dfs($G, v$)
+                \State $G_2$ = GetConnectedComponent($G_1, v$)
+                \State $G'$ is transposed graph of $G_2$
+                \State $G_3$ = dfs($G'$, $v$)
+                \For{each vertex w in $V_3$}
+                \If{v is marked with 0}
+                    \State return false
+                \EndIf
+                \EndFor
+                \\
+                \State \Return true
+            \end{algorithmic}
+        \end{algorithm}
+    \end{latin}
+
+    کارایی زمانی این الگوریتم نیز مانند قسمت قبل خطی خواهد بود.
+
+
+
+\end{document}

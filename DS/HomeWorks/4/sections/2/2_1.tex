@@ -1,0 +1,67 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\settextfont{XB Niloofar}
+
+\begin{document}
+برای پیدا کردن تعداد گره های پر درخت می توانیم به صورت بازگشتی تعداد گره های فرزندان
+چپ و راست گره را پیدا کرده و در صورت پر بودن گره ریشه آن را یک واحد اضافه می کنیم تا
+تعداد همه ی گره های پر را به دست آوریم. (طبق تعریف گره پر یا دو فرزند دارد یا فرزند ندارد)
+\begin{latin}
+    \begin{algorithm}[H]
+        \caption*{CountFullNodes($P$)}
+        \begin{algorithmic}
+            \Require Pointer p to tree T
+            \Ensure Count of full nodes in the tree
+            \State get tree T pointed by P
+            \State count = 0
+            \If{T is empty}
+                \State \Return 1
+            \Else
+                \State $countLeft = CountFullNodes(T_{left})$
+                \State $countRight = CountFullNodes(T_{right})$
+                \If{T has left and right child}
+                \State count += 1
+                \EndIf
+                \State count = count + countLeft + countRight
+                \State \Return count
+            \EndIf
+        \end{algorithmic}
+    \end{algorithm}
+\end{latin}
+\begin{latin}
+\begin{lstlisting}[language=Python, caption=Python Implementation]
+def count_full_nodes(root):
+    count = 0
+    
+    if not root.left and not root.right:
+        return 1
+
+    if root.left:
+        count += count_full_nodes(root.left)
+    if root.right:
+        count += count_full_nodes(root.right)
+
+    if root.right and root.right:
+        count += 1
+
+    return count
+\end{lstlisting}
+\end{latin}
+الگوریتم، مسئله را به دو مسئله کوچکتر تبدیل می کند و پس از حل آنها با انجام یک مقایسه و جمع
+آنها را باهم ترکیب می کند بنابراین اگر $T(n)$ نشان دهنده زمان اجرای الگوریتم باشد داریم :
+
+$$T(n) = 2\;T(n/2) + \theta(1)$$
+
+طبق قضیه اصلی، زمان اجرای الگوریتم $\theta(n)$ خواهد بود.
+\end{document}

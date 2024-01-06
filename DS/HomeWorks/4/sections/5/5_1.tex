@@ -1,0 +1,134 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\settextfont{XB Niloofar}
+
+\begin{document}
+
+برای حل این سوال به یک درخت
+$AVL$
+نیاز خواهیم داشت
+با این تفاوت که هر گره، علاوه بر داشتن اشاره‌گر هایی به گره پدر
+و گره فرزند راست و گره فرزند چپ،
+مقداری تحت عنوان
+$Size$
+را نیز نگهداری می کند.
+$Size$
+گرهِ
+$c$
+تعداد تمام گره هایی است که از 
+$c$
+منشعب می‌شوند.
+برای مثال
+$Size$
+ریشه درخت،
+برابر با یک واحد کمتر از کل تعداد گره هاست.
+
+% بگذریم...
+% از آنجایی که همیشه عدد کوچکتر را در سمت چپ
+% گره قرار می‌گیرد، می‌توان به صورتی شهودی به این نتیجه رسید که
+% کوچکترین عنصر درخت، سمت چپ ترین برگ آن است.
+
+از طرفی، فرض کنید دنبال
+$k$
+امین‌کوچکترین عنصر در درخت هستیم.
+می‌دانیم تمام عناصر کوچکتر
+از ریشه، در سمت چپ آن قرار دارند. به عبارت دیگر، اگر
+$Size$
+زیردرخت چپ برابر با
+$k - 1$
+باشد (یعنی
+$k - 1$
+عنصر در زیردرخت چپ قرار دارند)
+و به دنبال
+$k$
+امین‌کوچکترین عنصر باشیم،
+پاسخ همان ریشه است. چرا که
+$k - 1$
+عنصر کوچکتر از ریشه وجود دارند و خود ریشه
+$k$
+امین عنصر است.
+
+حال اگر کلید
+$k$
+کوچکتر از
+$Size$
+زیردرخت چپ باشد، می‌توان نتیجه گرفت که عنصر مورد نظر ما
+جایی در زیردرخت چپ قرار دارد.
+در غیر این صورت، اگر
+$k$
+از
+$Size$
+زیردرخت چپ بیشتر باشد، باید در زیردرخت راست دنبال آن بگردیم.
+
+میانه‌ی یک لیست که تعداد عناصر آن فرد باشد، اندیسِ
+$\left[\frac{N + 1}{2}\right]$
+ام آن است.
+در صورتی که تعداد عناصر آن زوج باشد، میانگین دو عنصر
+$\left[\frac{N}{2}\right]$
+ام و 
+$\left[\frac{N + 2}{2}\right]$
+ام آن است.
+
+پس با استفاده از الگوریتمی که در بالا شرح داده شد،
+به یافتن عناصر مورد نظر می‌پردازیم و میانه را حساب می‌کنیم.
+
+\begin{latin}
+    \begin{algorithm}[H]
+        \caption*{Find\_Kth($T, K, root$)}
+        \begin{algorithmic}
+            \Require T: A tree, K: The K\_th element to be found, root: The root to begin with
+            \Ensure The K\_th smallest element in T 
+            \State size = root.left.size + 1
+            \If{$k == size$}
+                \State return root.value
+            \ElsIf{k < size}
+                \State return Find\_Kth(T, K, root.left)
+            \Else
+                \State return Find\_Kth(T, K - size, root.right)
+            \EndIf
+        \end{algorithmic}
+    \end{algorithm}
+\end{latin}
+
+
+\begin{latin}
+    \begin{algorithm}[H]
+        \caption*{Find\_Median($T$)}
+        \begin{algorithmic}
+            \Require T: The AVL tree
+            \Ensure Median in T
+            \State size = T.size
+            \If{$size \% 2 == 1$}
+                \State return T.Find\_Kth((T, size + 1, T.root) // 2)
+            \EndIf
+            \State first\_med = T.Find\_Kth(T, size // 2, T.root)
+            \State second\_med = T.Find\_Kth(T, (size + 2) // 2, T.root) 
+            \State return (first\_med + second\_med) / 2 
+        \end{algorithmic}
+    \end{algorithm}
+\end{latin}
+
+با توجه به اینکه درختی که استفاده کردیم از نوع
+$AVL$
+بوده است، کارایی زمانی افزودن یک مقدار به آن از مرتبه
+$O(\log n)$
+خواهد بود.
+بعلاوه، همانطور که در الگوریتم
+$Find_Median$
+مشاهده کردیم، هر بار درخت را به دو نیم تقسیم کرده و یک نیم را حذف می‌کنیم.
+در نتیجه کارایی یافتن میانه از مرتبه
+$O(\log n)$
+خواهد بود.
+
+\end{document}

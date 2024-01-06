@@ -1,0 +1,854 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\usepackage{mathtools}
+
+\settextfont{XB Niloofar}
+\algrenewcommand{\algorithmicrequire}{\textbf{Input:}}
+\algrenewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+\begin{document}
+\include{info}
+\begin{center}
+
+    \includegraphics[scale=0.2]{./UILogo.png}
+
+    \University \\
+    \Department\\
+    
+    
+    \begin{large}
+    \vspace{0.5cm}
+    
+    \end{large}
+    
+    \vspace{1cm}
+    \begin{latin}
+        {\Large\textbf\EnglishCourseTitle}
+    \end{latin}
+    \begin{center}
+        \CourseName
+    \end{center}
+    
+    \vspace{1cm}
+    {عنوان:}\\[1.2em]
+    {\LARGE\textbf{\CourseReportTitle}}\\ 
+
+    \vspace{1.25cm}
+
+    {اعضای گروه}\\
+    \begin{spacing}{1.25}
+        {\large\textbf{\GroupeMembers}}
+    \end{spacing}
+    
+    \vspace{1.25cm}
+    
+    {\large\textbf{\courseSemester}}
+
+    \vspace{1cm}
+    {نام استاد درس}\\[0.5em]
+    {\large\textbf{\CourseProfessor}}
+    
+    \vspace{1.2cm}
+
+    \pagebreak
+    \end{center}
+
+    \section{تمرین}
+    \begin{latin}
+        \begin{algorithm}
+        \caption{Example($a, b$)}
+            \begin{algorithmic}
+                \Require Two integers $a$ and $b > 0$
+                \Ensure To be answered
+                \State $x \gets 0$
+                \State $y \gets |a|$    
+                \While{$y \geq b$}
+                    \State $y \gets y - b$
+                    \State $x \gets x + 1$
+                \EndWhile
+                \If{$a < 0$ and $y = 0$}
+                    \State $x \gets -x$
+                \EndIf
+                \If{$a < 0$ and $y > 0$}
+                    \State $y \gets b - y$
+                    \State $x \gets - (x + 1)$
+                \EndIf
+                \State return $(x, y)$
+            \end{algorithmic}
+        \end{algorithm}
+    \end{latin}
+    
+    \subsection{الف}
+    با یک مثال عددی، مسأله‌ای را که الگوریتم حل می‌کند، مشخص کنید.
+    \subsection*{جواب}
+
+    مثال زیر را به ازای ورودی های
+$a = 15$
+و
+$b = 7$
+بررسی می‌کنیم:
+
+\begin{latin}
+    
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        step & a  & b & x & y  & $y \geq b$ \\ \hline
+        0     & 15 & 7 & 0 & 15 & true                \\ \hline
+        1     & 15 & 7 & 1 & 8  & true                \\ \hline
+        2     & 15 & 7 & 2 & 1  & false               \\ \hline
+    \end{tabular}
+\end{table}
+\end{latin}
+
+طبق جدول، خروجی 
+$(2, 1)$
+خواهد بود.
+
+در واقع الگوریتم فوق همان الگوریتم تقسیم است که در آن
+$x$ 
+همان خارج قسمت و 
+$y$
+باقی‌مانده است.
+\pagebreak
+\subsection{ب}
+درستی الگوریتم را ثابت کنید.
+
+\subsection*{جواب}
+$(a, b)$
+را به صورت زوج مرتب به الگوریتم می‌دهیم.
+در هر بار اجرای حلقه‌ی while،
+به میزان
+$b$
+تا از 
+$y$
+کم شده و یک واحد به 
+$x$
+افزوده می‌شود.
+
+حلقه‌ی while
+به اندازه‌ی $n$
+بار تکرار می‌شود تا جایی که شرط
+$y \geq b$
+برقرار نباشد. یعنی:
+\begin{align*}
+y &= |a| - nb\\
+x &= n - 1 + 1 = n
+\end{align*} 
+حال با فرض اینکه 
+$|a| - b < b$
+باشد و حلقه while
+به پایان برسد داریم:
+\begin{align*}
+    y &= |a| - nb \\
+    x &= n
+\end{align*}
+در اینجا نیز دو حالت داریم:
+\begin{align*}
+    a \geq 0&, y = a - nb \Rightarrow a = xb + y \\
+    a < 0&, y = - a - xb \Rightarrow a = -xb - y
+\end{align*}
+و هچنین داریم:
+\begin{align*}
+    y \geq 0,\; y < b \Rightarrow 0 \leq y < b
+\end{align*} 
+طبق قضیه تقسیم از کتاب ریاضیات گریمالدی داریم:
+\begin{align*}
+a &= xb + y \\
+0 &\leq y < b
+\end{align*}
+که همان الگوریتم تقسیم است.
+
+\pagebreak
+\subsection{پ}
+با این فرض که
+$a > b$
+باشد، درستی این ادعا را که کارایی زمانی الگوریتم
+$O(x\log{a})$
+است، توجیه کنید.
+\subsection*{جواب}
+مشخص است که بیشترین عملیات انجام شده مربوط به محتویات حلقه‌ی
+$while$
+می‌باشد.
+با توجه به اینکه متغیر
+$x$
+نقش counter
+را بازی می‌کند، می‌دانیم که در نهایت عدد
+$x$
+نشانگر تعداد دفعات اجرای حلقه‌ی 
+while
+خواهد بود.
+(شروطی که بعد از حلقه‌ی
+while
+آمده اند و در مقدار 
+$x$
+تغییر ایجاد می‌کنند، تنها در صورتی اجرا می‌شوند که مقدار
+$a < 0$
+باشد. اما در صورت سوال فرض بر این گرفته شده که 
+$a>b$
+و می‌دانیم که 
+$b>0$
+پس شروط مذکور هرگز اجرا نخواهند شد.)
+
+از طرفی، سنگین ترین عملیات موجود در حلقه‌ی
+$while$
+عملیات تفریق است که هربار رخ می‌دهد.
+برای
+$a$
+و
+$b$
+های به اندازه‌ی کافی بزرگ، عملیات تفریق هزینه‌ای برابر با تعداد بیت های عدد بزرگتر (یعنی
+$a$)
+خواهد داشت. چرا که این عملیات به ازای هر بیت اجرا خواهد شد.
+در ضمن، میدانیم که تعداد بیت های یک عدد ده‌دهی (دسیمال) مانند 
+$a$
+برابر با 
+$\log_2^a$
+است. 
+
+در نتیجه، 
+عملیات تفریق که خود با کارایی 
+$\log_2^a$
+انجام می‌شود،
+$x$
+بار رخ می‌دهد.
+پس کارایی الگوریتم فوق
+$O(x\log{a})$
+است.
+\subsection*{مراجع}
+
+\pagebreak
+\section{تمرین}
+درستی هر یک از این ادعاهای ریاضی را ثابت کنید.
+\subsection{الف}
+$$\displaystyle \sum_{i = 0}^n a^i \in \Theta(a^n), a \ge 1$$
+\subsection*{جواب}
+\begin{align}
+    \sum_{i = 0}^n a^i &= 1 + a + a^2 + ... + a^n\\
+    &= 1 \cdot \left( \frac{a^n - 1}{a - 1}\right)\\
+    &\Rightarrow \lim_{n \to \infty} \frac{1 \cdot \left( \frac{a^n - 1}{a - 1}\right)}{a^n}\\
+    &= \lim_{n \to \infty} \frac{a^n \left(1 - \frac{1}{a^n}\right)}{a^n(a-1)}\\
+    &= \frac{1}{a - 1}
+\end{align}
+از جایی که
+$a$
+عدد ثابت است، حاصل نیز عددی ثابت بوده و در نتیجه:
+$$\displaystyle \sum_{i = 0}^n a^i \in \Theta(a^n), a \ge 1$$
+
+\pagebreak
+\subsection{ب}
+$$\displaystyle \sum_{i = 1}^n i^k \in \Theta(n^{k+1})$$
+\subsection*{جواب}
+\begin{align}
+    \sum_{i=1}^n i^k &= 1^k + 2^k + \ldots + \left(\frac{n}{2}\right)^k + \ldots + (n-1)^k\\
+    &\geq (\frac{n}{2})^k + \ldots + (n-1)^k\\
+    &\geq (\frac{n}{2})^k + \ldots + (\frac{n}{2})^k\\
+    &\geq (\frac{n}{2})^k \cdot (\frac{n}{2})\\
+    &\geq \frac{n^{k+1}}{2^{k+1}}\\
+    &\approx n^{k+1}\\
+    &\Rightarrow S \in \Omega(n^{k+1})
+\end{align}
+
+از طرفی داریم:
+\begin{align}
+    \sum_{i=1}^n i^k &= 1^k + 2^k + \ldots + (n-1)^k\\
+    &\leq (n-1)^k + \ldots + (n-1)^k\\
+    &\leq (n-1)(n-1)^k\\
+    &= (n-1)^{k+1}\\
+    &\leq n^{k+1}\\
+    &\Rightarrow S \in O(n^{k+1})
+\end{align}
+
+
+از معادله‌ی 12 و 18 نتیجه می‌شود که:
+$$\displaystyle \sum_{i=1}^n \in \Theta(n^{k+1})$$
+
+\subsection{پ}
+$$\displaystyle \sum_{i = 1}^n \frac{1}{i} \in \Theta(\ln{n})$$
+\subsection*{جواب}
+$f(x) = \frac{1}{x}$
+یک تابع نزولی است. پس مجموع ریمان آن از چپ، از مقدار انتگرال تابع بیشتر خواهد بود.
+\begin{align}
+\displaystyle \int_{1}^{n} \frac{1}{x} dx &\leq \sum_{i= 1}^n \frac{1}{i} \\
+\ln(x) &\leq \sum_{i=1}^n \frac{1}{i} \\
+\sum_{i=1}^n \frac{1}{i} &\in \Omega(\ln{x})
+\end{align}
+
+از طرفی، چون $f(x)$ یک تابع نزولی است، مجموع ریمان آن از راست از انتگرال تابع کمتر خواهد بود.
+
+\begin{align}
+    \sum_{i=1}^n \frac{1}{i+1} &\le \int_{1}^n \frac{1}{x} dx \\
+    1 + \sum_{i=1}^n \frac{1}{i+1} &\le \int_{1}^n \frac{1}{x} dx + 1 \\
+    \sum_{i=1}^n \frac{1}{i} &\le \int_{1}^n \frac{1}{x} dx + 1\\
+    \sum_{i=1}^n \frac{1}{i} &\le \ln{n} + 1 \\
+    \sum_{i=1}^n \frac{1}{i} &\in O (\ln{n})
+\end{align}
+
+از معادله 21 و 26 نتیجه میشود که:
+$$\displaystyle \sum_{i=1}^n \frac{1}{i} \in \Theta (\ln{n}) $$
+
+\pagebreak
+\subsection{ت}
+$$\displaystyle \sum_{i = 0}^n \binom{n}{i}i \in \Theta(n2^n)$$
+\subsection*{جواب}
+\begin{align}
+    \sum_{i = 0}^n \left(\frac{n}{i}\right)i &= \sum_{i = 1}^n \left(\frac{n}{i}\right)i \\
+    &= \sum_{i = 1}^n \frac{n!i}{i!(n-i)!} \\
+    &= \sum_{i = 1}^n \frac{n(n-1)!i}{i(i-1)!(n-i)!} \\
+    &= n \cdot \sum_{i = 1}^n \binom{n-1}{i-1} \\
+    &= n \cdot \sum_{i = 0}^{n-1} \binom{n-1}{i} \\
+    &= n2^{n-1} \\
+    &\approx n2^n \\
+    &\Rightarrow \sum_{i = 0}^n \binom{n}{i}i \in \Theta(n2^n)
+\end{align}
+\subsection*{مراجع}
+
+\pagebreak
+\section{تمرین}
+این سه عملیات را در نظر بگیرید:
+    \begin{itemize}
+        \item $Push(S, e)$:
+        عنصری را در انتهای یک ساختارداده درج می‌کند.
+        \item $Pop(S)$:
+        عنصری را از انتهای یک ساختار داده حذف می‌کند.
+        \item $Find - Min(S)$:
+        کوچکترین عنصر را در یک ساختارداده برمی‌گرداند (بدون آنکه آن را حذف کند).
+    \end{itemize}
+    در اینجا ما به دنبال طراحی الگوریتم‌هایی برای انجام سریع سه عملیات
+    Push و 
+    Pop و 
+    Find - Min 
+    هستیم و قسمت عمده طراحی این الگوریتم‌ها چیزی نیست جز طراحی ساختارداده‌ای برای چینش مناسب داده ها.
+
+    ساختار داده‌ای طراحی کنید که با آن بتوان، هر سه عملیات
+    Push و 
+    Pop و 
+    Find - Min 
+    را در زمان
+    $\Theta(1)$ 
+    انجام داد.
+    بعد از طراحی ساختارداده، شبه‌کد الگوریتم‌های
+    $Push(S, e)$ و 
+    $Pop(S)$ و 
+    $Find - Min(S)$ 
+    را بنویسید
+
+\subsection{جواب}
+نحوه عملکرد دو عملیات 
+$Push$ و $Pop$
+یادآور خصوصیات حافظه پشته 
+$(Stack)$
+است که به صورت 
+$(First \, In \, Last \, Out)$
+عمل می‌کند. 
+
+روند حل و یافتن الگوریتم مورد نظر با کارایی
+$O(1)$
+در انجام سه عملیات مذکور:\\
+در ابتدا ساده‌اندیشانه ترین حالتی که به نظر می‌رسد بدین صورت است که اندیس مقدار مینیمم همواره در یک متغیر جداگانه ذخیره شود و در هربار انجام عملیات $Push$
+،بررسی شود که مقدار افزوده شده از مقدار مینیمم بیشتر است یا خیر. در صورتی که بیشتر بود، صرفا به 
+$Stack$ 
+افزوده می‌شود، اما در صورتی که مقدار جدید از مقدار مینمم کمتر باشد،
+متغیری که حاوی اندیس مقدار مینمم است اپدیت شده و برابر با 
+$len(Stack) - 1$ 
+می‌شود. 
+اما راهبرد مذکور دارای یک ایراد اساسی است. اگر مقدار مینیمم، آخرین عضو پشته باشد، با انجام عملیات 
+$Pop$
+، این مقدار مینمم حذف خواهد شد، اما ما به دومین کمترین مقدار پشته دسترسی نداریم. فلذا برای یافتن مقدار مینمم جدید، مجبور هستیم تا یک بار دیگر پشته را پیمایش کنیم که این عملیات در بهینه ترین حالت برای پشته‌ی نامرتب ما، پیچیدگی‌ای از مرتبه 
+$O(n)$
+خواهد داشت. 
+در نتیجه برای حل این مشکل، نیاز داریم تا در هر مرحله از انجام عملیات های 
+$Pop$ 
+و 
+$Push$
+، به اصطلاح آمار مینمم ها دستمان باشد. بدین منظور، به پشته ای دیگر برای ذخیره‌سازی مینمم ها در هر مرحله نیاز داریم. 
+
+\pagebreak
+\begin{center}
+    \textbf{پیاده سازی ساختار داده در پایتون}
+\end{center}
+\begin{latin}
+    \begin{lstlisting}[language=Python, caption=Python Implementation of SuperStack]
+class SuperStack:
+    def __init__(self) -> None:
+        self.main_stack = list()
+        self.aux_stack = list()
+        self.top = -1
+
+    def is_empty(self):
+        return self.top == -1
+
+    def add_to_aux(self, x: int):
+        if self.is_empty():
+            self.aux_stack.append(x)
+        elif self.aux_stack[self.top] <= x:
+            last_aux_stack = self.aux_stack[self.top]
+            self.aux_stack.append(last_aux_stack)
+        else:
+            self.aux_stack.append(x)
+
+    def find_min(self):
+        if self.is_empty():
+            return None
+        else:
+            return self.aux_stack[self.top]
+
+    def push(self, x: int):
+        self.main_stack.append(x)
+        self.add_to_aux(x)
+        self.top += 1
+
+    def pop(self):
+        if self.is_empty():
+            return None
+        else:
+            last_main_stack = self.main_stack[self.top]
+            self.main_stack.pop(self.top)
+            self.aux_stack.pop(self.top)
+            self.top -= 1
+            return last_main_stack
+    
+\end{lstlisting}
+\end{latin}
+
+\pagebreak
+توضیحات مربوطه:
+\begin{itemize}
+    \item متغیر $main\_stack$:
+    لیستی شامل مقادیر اصلی است.
+
+    \item متغیر $aux\_stack$:
+    لیستی شامل مقدار مینیمم پشته در هر مرحله است. از این پس با نام پشته‌ی کمکی از آن یاد خواهیم کرد.
+
+    \item متغیر $top$:
+    طول پشته را مشخص می‌کند.
+
+    \item متد $is\_empty$:
+    اگر طول پشته $0$ باشد
+    $(top == -1)$
+    ‌ مقدار 
+    $true$ 
+    و در غیر این صورت 
+    $false$
+    را برمی‌گرداند.
+
+    \item متد $add\_to\_aux$:
+    متدی است برای افزودن مقدار جدید به پشته‌ی کمکی. در صورتی که پشته خالی باشد، مقدار ورودی را به آن می‌افزاید. در غیر این صورت، دو حالت داریم:
+        \begin{enumerate}
+            \item مقدار ورودی از مینیمم پشته بیشتر است: در این صورت صرفا مینمم قبلی پشته (آخرین عنصر پشته)، دوباره به پشته افزوده می‌شود. 
+            \item مقدار ورودی از مینمم پشته‌ی کمکی کمتر است (یک مینیمم جدید داریم): مقدار ورودی به پشته‌ی کمکی افزوده می‌شود.
+        \end{enumerate}
+    \item متد $find\_min$:
+    اگر پشته خالی نباشد، اخرین عضو پشته‌کمکی را برمی‌گرداند.
+
+    \item متد $push$:
+    ورودی را به پشته‌ی اصلی و سپس به پشته‌کمکی می‌افزاید‌. سپس، طول پشته را یک واحد بیشتر می‌کند.
+    \item متد $pop$:
+    اگر پشته خالی نباشد، ابتدا آخرین مقدار افزوده شده به پشته را در متغیر
+    $last\_main\_stack$:
+    ذخیره کرده و سپس با توجه به طول پشته 
+    $(self.top)$
+    ، آخرین اعضای هر دو پشته را حذف میکنیم. در نهایت 
+    $last\_main\_stack$:
+    را برمی‌گردانیم.
+\end{itemize}
+
+با توجه به اینکه در هربار از انجام عملیات
+$push$ 
+و 
+$pop$،
+تعداد مشخصی (ثابت عددی) فرخوانی صورت می‌گیرد، عملیات‌های مذکور از مرتبه اعداد ثابت هستند و نماد مجانبی آنها 
+$O(1)$
+خواهد بود.
+
+\subsection*{مراجع}
+
+\begin{latin}
+    
+    \begin{enumerate}
+        \item \href{https://www.geeksforgeeks.org/design-and-implement-special-stack-data-structure/amp/}{Geeks For Geeks - Special Stack}
+        \item \href{https://stackoverflow.com/questions/12054415/get-min-max-in-o1-time-from-a-queue/12054481#12054481}{StackOverFlow - Get Min Max in O(1) from a Queue}
+        \item \href{https://stackoverflow.com/questions/33973/how-do-i-efficiently-keep-track-of-the-smallest-element-in-a-collection}{StackOverFlow - Keep track of the minimum effieciently}
+    \end{enumerate}
+    \end{latin}
+    
+    \pagebreak
+    
+    \section{تمرین}
+    فرض کنید
+    $A$
+    مجموعه‌ای متنهای باشد، مثلا مجموعه‌ی
+    $A = \{1, 2, \ldots, n\}$
+    و
+    $f$
+    تابعی باشد از 
+    $A$ 
+    به 
+    $A$: 
+    $$f: A \rightarrow{A}$$
+    \subsection{الف}
+    الگوریتمی کارا طراحی کنید که با آن بتوان تعیین کرد که آیا چنین توابع
+    $f$ 
+    ای، «یک - به - یک» هستند یا خیر. الگوریتمتان را با شبه‌کد توصیف کنید و کارایی زمانی آن را نیز اندازه بگیرید.
+    \subsection*{جواب}
+    الگوریتم:
+    
+    \begin{latin}
+        \begin{algorithm}
+        \caption{IsInjective($A, f(x)$)}
+            \begin{algorithmic}
+                \Require A set $A$, and a function $f(x)$
+                \Ensure returns $true$ if f(x) is injective, $false$ otherwise.
+                \State $Y = [\, \, \,]$
+                \For{$i = 0$ to $n-1$}
+                    \If{f(A[i]) is in $Y$}
+                        \State return $false$
+                    \Else
+                        \State Y.push(A[i])
+                    \EndIf
+                \EndFor
+                \State return $true$ 
+            \end{algorithmic}
+        \end{algorithm}
+    \end{latin}
+    
+    تحلیل کارایی الگوریتم:
+    
+    $M(n)$
+    را تعداد مقایسه‌های الگوریتم در بدترین حالت در نظر می‌گیریم.
+    
+    حلقه‌ی 
+    $for$
+    برای 
+    $f$
+    های «یک - به - یک»
+    $n$
+    بار اجرا می‌شود و در هربار اجرای حلقه 
+    $i-1$
+    بار مقایسه انجام می‌شود. بنابراین داریم:
+    $$\displaystyle M(n) = \sum_{i=1}^n i - 1 = \sum_{i=0}^{n-1} = \frac{n(n-1)}{2}\\
+    \Rightarrow M(n) \in \Theta(n^2)$$
+    
+    
+    \pagebreak
+    \subsection{ب}
+    الگوریتمی کارا طراحی کنید که با آن بتوان بزرگترین زیرمجموعه 
+    $S \subseteq A$
+    را به گونه‌ای که تابع
+    $f: S \rightarrow S$
+    «یک - به - یک» باشد، تعیین کرد. الگوریتمتان را با شبه‌کد توصیف کنید و کارایی زمانی آن را نیز اندازه بگیرید.
+    \subsection*{جواب}
+    \begin{latin}
+        \begin{algorithm}
+        \caption{BiggestInjectiveSubset($A, f(x)$)}
+            \begin{algorithmic}
+                \Require A set $A$, and a function $f(x)$
+                \Ensure returns the biggest injective subset of $A$ 
+                \State $X = [\, \, \,]$
+                \State $Y = [\, \, \,]$
+                \For{$i = 0$ to $n-1$}
+                    \If{f(A[i]) is not in $Y$}
+                        \State Y.push(f(A[i]))
+                        \State X.push(A[i])
+                    \EndIf
+                \EndFor
+                \State return $X$ 
+            \end{algorithmic}
+        \end{algorithm}
+    \end{latin}
+    توضیح الگوریتم:
+    
+    در ابتدا
+    $X$
+    و
+    $Y$
+    را لیست هایی خالی در نظر می‌گیریم.
+    سپس از 
+    $0$
+    تا
+    $n-1$
+    (تمام اعضای مجموعه‌ی
+    $A$)
+    بررسی می‌کنیم که در صورت عدم وجود
+    $f(A[i])$
+    در
+    $Y$،
+    اندیس آن را به
+    $X$
+    و مقدار
+    $f(A[i])$
+    آن را به
+    $Y$
+    اضافه می‌کنیم.
+    در نهایت
+    $X$
+    را برمی‌گردانیم که همان مجموعه‌ی اعضایی از 
+    $A$
+    است که تابعی
+    «یک - به - یک»
+    می‌سازند.
+    تحلیل کارایی الگوریتم:
+    
+    همانند الگوریتم قبل، 
+    $M(n)$
+    را تعداد مقایسه‌های الگوریتم در بدترین حالت در نظر می‌گیریم.
+    
+    حلقه‌ی 
+    $for$
+    برای 
+    $f$
+    های «یک - به - یک»
+    $n$
+    بار اجرا می‌شود و در هربار اجرای حلقه 
+    $i-1$
+    بار مقایسه انجام می‌شود. بنابراین داریم:
+    $$\displaystyle M(n) = \sum_{i=1}^n i - 1 = \sum_{i=0}^{n-1} = \frac{n(n-1)}{2}\\
+    \Rightarrow M(n) \in \Theta(n^2)$$
+    
+    \subsection*{مراجع}
+
+    \pagebreak
+\section{تمرین}
+این الگوریتم بازگشتی برای مسأله یکتایی عناصر را در نظر بگیرید.
+\begin{latin}
+\begin{algorithm}
+        \caption{UniqueElements($A[0, \ldots, n - 1]$)
+        Determines whether all the elements in a given array are distinct} 
+        \begin{algorithmic}
+            \Require An array $A[0, ..., n-1]$
+            \Ensure Returns "true" if all the elements in $A$ are distinct and "false" otherwise 
+            \If{$n = 1$}
+                \State return true
+            \ElsIf {not UniqueElements($A[1, \ldots, n - 2]$}
+                \State return false
+            \ElsIf {not UniqueElements($A[0, \ldots, n - 1]$}
+                \State return false
+            \Else 
+
+                \State return $A[0] \neq A[n - 1]$
+            \EndIf
+            \State return $(x, y)$
+        \end{algorithmic}
+        \end{algorithm}
+\end{latin}
+و سپس به سوالات زیر پاسخ دهید.
+
+\subsection{الف}
+چرا این الگوریتم بازگشتی، جواب درست مسأله را برمی‌گرداند؟
+\subsection*{جواب}
+$k$
+را تعداد عناصر یک آرایه فرض می‌کنیم. اگر اندازه‌ی
+$A = 1$
+باشد، الگوریتم
+$true$
+را برمی‌گرداند که خروجی صحیحی برای ورودی مذکور است. (حالت پایه)
+فرض می‌کنیم الگوریتم برای آرایه‌ای با اندازه
+$k$
+درست باشد، نشان می‌دهیم اگر اندازه‌ی آرایه
+$k+1$
+باشد، خروجی الگوریتم درست خواهد بود.
+
+برای تعیین یکتا بودن عناصر، الگوریتم آرایه را به دو آرایه‌ی کوچکتر با اندازه
+$k$
+تقسیم می‌کند:
+$$A_1 = A[0, \ldots, n-2] , A_2 = A[1, \ldots, n-1]$$
+بدین صورت،
+$A_1$
+یکتایی عناصر را از
+$0$
+تا
+$n-2$
+و
+$A_2$
+یکتایی عناصر را از
+$1$
+تا $n-1$
+بررسی می‌کند.
+برای یکتایی عناصر، کافیست عنصر اول
+$(k=0)$
+و عنصر
+$n$
+ام
+$(k = n-1)$
+را مقایسه کنیم تا یکتایی
+$A$
+مشخص شود که در الگوریتم همین اتفاق می‌افتد.
+به عبارت دیگر، چون دو آرایه به طول
+$k$
+داریم، بنابر فرض استقرا الگوریتم می‌تواند یکتایی عناصر این دو آرایه را تشخیص دهد. چون اشتراک این دو آرایه عناصر عبارت است از:
+$A[1, \ldots, n-2]$،
+در نتیجه در صورت از گذر از سه شرط اول تابع، مطمئن خواهیم بود که اعضای مذکور مشابه نیستند. در اینجاست که با ایجاد شرط چهارم و بررسی عدم یکتایی عناصری که در اشتراک حضور نداشتند، به پاسخ نهایی مسأله می‌رسیم.
+در نتیجه بنابر استقرای ریاضی، این الگوریتم برای هر آرایه
+$A$
+با اندازه‌ی
+$n>0$
+درست خواهد بود.
+
+\subsection{ب}
+کارایی زمانی الگوریتم چقدر است؟ چرا الگوریتم ناکارا است؟
+\subsection*{جواب}
+$M(n)$
+را تعداد مقایسه‌های الگوریتم در بدترین حالت در نظر می‌گیریم:
+\begin{align}
+    M(1) &= 1,\\
+    M(n) &= M(n-1) + M(n-1) + 4\\
+    &= 2M(n-1) + 4 \\
+    &= 2(2M(n-2) + 4) + 4,\\
+    &= 2^iM(n-i) + 4i\\
+    &= 2^{n-1}M(1) + 4(n-1)\\
+    &= 2^{n-1} + 4n - 4\\
+    &\approx 2^{n-1} \approx 2^n\\
+    &\Rightarrow M(n) \in \Theta(2^n)
+\end{align}
+
+درخت فرخوانی های بازگشتی الگوریتم برای 
+$A[0, 1, 2, 3, 4]$:
+\begin{figure}[!h]
+    \centering
+    
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,243); %set diagram left start at 0, and has height of 243
+
+
+% Text Node
+\draw (286,31.4) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize]  {$A[ 0,\ \dotsc ,\ 4]$};
+% Text Node
+\draw (178,96.4) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize]  {$A[ 0,\ \dotsc ,\ 3]$};
+% Text Node
+\draw (130,161.4) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize]  {$A[ 0,\ 1,\ 2]$};
+% Text Node
+\draw (148,209.4) node [anchor=north west][inner sep=0.75pt]    {$\cdots $};
+% Text Node
+\draw (393,95.4) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize]  {$A[ 1,\ \dotsc ,\ 4]$};
+% Text Node
+\draw (224,163.4) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize]  {$A[ 1,\ 2,\ 3]$};
+% Text Node
+\draw (354,164.4) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize]  {$A[ 1,\ 2,\ 3]$};
+% Text Node
+\draw (448,166.4) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize]  {$A[ 2,\ 3,\ 4]$};
+% Text Node
+\draw (242,208.4) node [anchor=north west][inner sep=0.75pt]    {$\cdots $};
+% Text Node
+\draw (371,208.4) node [anchor=north west][inner sep=0.75pt]    {$\cdots $};
+% Text Node
+\draw (466,208.4) node [anchor=north west][inner sep=0.75pt]    {$\cdots $};
+% Connection
+\draw    (306.22,46) -- (231.5,90.97) ;
+\draw [shift={(229.78,92)}, rotate = 328.96] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+% Connection
+\draw    (337.88,46) -- (411.4,89.97) ;
+\draw [shift={(413.12,91)}, rotate = 210.88] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+% Connection
+\draw    (435.56,110) -- (470.31,160.35) ;
+\draw [shift={(471.44,162)}, rotate = 235.39] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+% Connection
+\draw    (422.8,110) -- (391.29,158.32) ;
+\draw [shift={(390.2,160)}, rotate = 303.11] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+% Connection
+\draw    (219.67,111) -- (247.3,157.28) ;
+\draw [shift={(248.33,159)}, rotate = 239.16] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+% Connection
+\draw    (206.11,111) -- (169.17,155.46) ;
+\draw [shift={(167.89,157)}, rotate = 309.72] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+% Connection
+\draw    (160.38,176) -- (161.45,203) ;
+\draw [shift={(161.52,205)}, rotate = 267.73] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+% Connection
+\draw    (254.4,178) -- (255.41,202) ;
+\draw [shift={(255.49,204)}, rotate = 267.59] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+% Connection
+\draw    (384.2,179) -- (384.7,202) ;
+\draw [shift={(384.74,204)}, rotate = 268.77] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+% Connection
+\draw    (478.43,181) -- (479.37,202) ;
+\draw [shift={(479.46,204)}, rotate = 267.43] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+\end{tikzpicture}
+
+\end{figure}
+
+از روی درخت فراخوانی‌های بازگشتی، میتوانیم ببینیم که الگوریتم روی آرایه‌های یکسانی چند بار اجرا میشود و نماد مجانبی آن
+$2^n$
+است، پس الگوریتم کارا نیست.
+
+
+\pagebreak
+\subsection{پ}
+یک الگوریتم بازگشتی کارا برای مسأله طراحی کنید و کارایی زمانی آن را نیز اندازه بگیرید.
+
+\subsection*{جواب}
+شبه کد:
+    
+    \begin{latin}
+        \begin{algorithm}
+        \caption{UniqueElements($A[0, \ldots, n - 1]$)
+        Determines whether all the elements in a given array are distinct}\label{alg:cap} 
+        \begin{algorithmic}
+            \Require An array $A[0, ..., n-1]$
+            \Ensure Returns "true" if all the elements in $A$ are distinct and "false" otherwise 
+            \If{$n = 1$}
+                \State return true
+            \ElsIf {$A[0]$ is in $A[1, \ldots, n - 1]$}
+                \State return false
+            \Else
+                \State return UniqueElements($A[1, \ldots, n-1]$)
+            \EndIf
+        \end{algorithmic}
+        \end{algorithm}
+    \end{latin}
+
+کارایی الگوریتم:
+    \begin{align}
+        M(1) &= 1,\\
+        M(n) &= M(n-1) + (n-1) + 1\\
+        &= M(n-2) + (n-2) + 1 + (n-1) + 1 \\
+        &= M(n-i) + \sum_{k=1}^i n - k + 1\\
+        &= M(1) + \sum_{k=1}^{n-1} n - k + 1\\
+        &= n(n-1) + \frac{1}{2}(n-1)(n-2) + (n-1)\\
+        &\approx \frac{n^2}{2} \approx n^2\\
+        &\Rightarrow M(n) \in \Theta(n^2)
+    \end{align}
+\subsection*{مراجع}
+
+\end{document}

@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage{caption}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{xepersian}
+\settextfont{XB Niloofar}
+
+\begin{document}
+
+برای حل این مسئله می توانیم خیابان ها و تقاطع های شهر را مانند رئوس و یال های گراف در نظر بگیریم.
+با توجه به یکطرفه بودن خیابان ها، گراف مورد نظر جهت دار خواهد بود و برای اینکه نشان دهیم بین هر دو راس،
+مسیری وجود دارد باید نشان دهیم که این گراف قویا همبند است.
+\begin{latin}
+    \begin{algorithm}[H]
+        \caption*{dfs}
+        \begin{algorithmic}
+            \Require Graph G = <V, E> and v, a vertex of G
+            \Ensure Marks all the vertices connected to v with 1
+            \State mark v with 1
+            \For{each vertex w in V adjacent to v}
+                \If{w is marked with 0}
+                    \State dfs(w)
+                \EndIf
+            \EndFor
+        \end{algorithmic}
+    \end{algorithm}
+\end{latin}
+
+\begin{latin}
+    \begin{algorithm}[H]
+        \caption*{IsStronglyConnected}
+        \begin{algorithmic}
+            \Require Graph G = <V, E>
+            \Ensure Boolean representing if the graph is strongly connected or not
+            \State mark each vertex in V with 0 as a mark of being "unvisited"
+            \State $G_1$ = dfs(G, $V_0$)
+            \For{each vertex v in $V_1$}
+                \If{v is marked with 0}
+                    \State return false
+                \EndIf
+            \EndFor
+            \\
+            \State $G'$ is transposed graph of G
+            \State $G_2$ = dfs($G'$, $V_0$)
+            \For{each vertex w in $V_2$}
+            \If{v is marked with 0}
+                \State return false
+            \EndIf
+            \EndFor
+            \\
+            \State return true
+        \end{algorithmic}
+    \end{algorithm}
+\end{latin}
+
+الگوریتم اول، تمام راس های متصل به ورودی را پیمایش می کند.
+در الگوریتم دوم ابتدا از یکی از راس های گراف شروع کرده و تمام راس های متصل به آن را
+علامت گذاری می کنیم. اگر تمام رئوس علامت داشته باشند، آن گاه حداقل یک مسیر بین راس انتخاب شده و بقیه رئوس وجود دارد،
+در غیر اینصورت این گراف قویا همبند نیست.
+
+حال باید نشان دهیم که از هر راس دیگر گراف به راس انتخاب شده نیز یک مسیر وجود دارد.
+این کار را با بررسی وجود مسیر بین راس انتخاب شده و رئوس گراف ترانهاده انجام می دهیم.
+به عبارتی اگر در گراف ترانهاده بین راس انتخاب شده و هر راس دیگر یک مسیر وجود داشته باشد پس در گراف اصلی،
+یک مسیر از هر راس به راس انتخاب شده وجود خواهد داشت.
+
+مانند قبل گراف ترانهاده را از راس انتخاب شده پیمایش می کنیم و تمام رئوس مجاور آن را به صورت بازگشتی علامت گذاری می کنیم،
+اگر همه گراف علامت گذاری شده باشد پس می توانیم نتیجه بگیریم که گراف قویا همبند است.
+
+این الگوریتم از دو جستجوی عمقی و دو حلقه استفاده می کند، پس کارایی زمانی آن
+$$O(4|V| + 2|E|) = O(|V| + |E|)$$
+خواهد بود.

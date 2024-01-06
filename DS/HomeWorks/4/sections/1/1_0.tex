@@ -1,0 +1,48 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\settextfont{XB Niloofar}
+
+\begin{document}
+فرض کنید
+$H_0, H_1, H_2, \ldots$
+دنباله‌ای نامتناهی از ماتریس‌ها باشد. در این دنباله،
+$H_0 = 1$
+است و برای هر
+$k > 0$
+ماتریسی است
+$2^k \times 2^k$
+با این تعریف بازگشتی:
+
+$$
+H = 
+\left[
+\begin{matrix}
+    H_{k-1} & H_{k-1} \\
+    H_{k-1} & -H_{k-1}
+\end{matrix}  
+\right]
+$$
+
+اگر
+$v$
+برداری ستونی با طول
+$n=2^k$
+باشد، الگوریتمی با کارایی
+$O(n\log n)$
+برای محاسبه‌ی حاصل‌ضرب ماتریس در بردار
+$H_k v$
+ارائه کنید. فرض کنید که همه اعداد
+آنقدر کوچک باشند که عملیات حسابی جمع
+و ضرب روی آنها در زمان ثابت قابل انجام باشد.
+\end{document}

@@ -1,0 +1,23 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\settextfont{XB Niloofar}
+
+\begin{document}
+برای حل، این مسئله به سه مسئله کوچکتر با اندازه های $2/3$ مسئله اصلی تبدیل می شود
+که پس از حل شدن آن ها مسئله اصلی بدون نیاز به ترکیب جواب ها حل می شود.
+بنابراین اگر $T(n)$ را زمان اجرای الگوریتم در نظر بگیریم، خواهیم داشت :
+$$T(n) = 3T(2/3n) + \theta(1)$$
+طبق قضیه اصلی کارایی الگوریتم $\theta(n^{log_{1.5}{3}}) = \theta(n^{2.7})$ است.
+\end{document}

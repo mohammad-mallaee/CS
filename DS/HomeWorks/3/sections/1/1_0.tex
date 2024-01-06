@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{xepersian}
+\settextfont{XB Niloofar}
+
+\begin{document}
+
+این الگوریتم را برای مسأله تولید تمام
+$n!$
+جایگشت‌
+$n$
+عنصر در نظر بگیرید:
+
+\begin{latin}
+    \floatname{algorithm}{}
+    \begin{algorithm}[H]
+        \caption*{\textbf{LexicographicPermute(n)} Generates permutations in lexicographic order} 
+        \begin{algorithmic}
+            \Require A positive integer n
+            \Ensure A list of all permutations of $\{1, \ldots , n\}$ in lexicographic order
+            \State initialize the first permutation with  $\{12 . . . n\}$
+            \While {last permutation has two consecutive elements in increasing order}
+                \State let $i$ be its largest index such that  $a_i<a_i+1$ \Comment{$a_i+1>a_i+2> \ldots >a_n$}
+                \State find the largest index $j$ such that $a_i<a_j$ \Comment{$j \geq i+1$ since $a_i<a_i+1$}
+                \State swap $a_i$ with $a_j$ \Comment{$a_{i+1}a_{i+2} \ldots a_n$ will remain in decreasing order}
+                \State reverse the order of the elements from $a_{i+1}$ to $a_n$ inclusive
+            \EndWhile
+        \end{algorithmic}
+    \end{algorithm}
+\end{latin}
+
+    \textbf{الف)} درستی الگوریتم را ثابت کنید؛ یعنی ثابت کنید که الگوریتم 
+    $n!$
+    جایگشت متفاوت با هم تولید می‌کند.
+    
+    \textbf{ب)}  کارایی زمانی الگوریتم را تعیین کنید.
+\end{document}
