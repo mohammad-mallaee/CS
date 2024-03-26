@@ -1,0 +1,26 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\settextfont{XB Niloofar}
+
+\begin{document}
+هر یک از این رابطه‌های بازگشتی را (که در تحلیل کارایی زمانی الگوریتم‌های بازگشتی پیش می‌آیند) با هر روشی که می‌دانید، حل کنید. تعیین مرتبه رشد توابع جواب کافی است. 
+\paragraph[1.1]{الف)}
+$$T(n) = T(k) + T(n - k -1) + d \hspace{0.75em} for \hspace{0.75em} n > 0, \hspace{1.5em} T(0) = c$$
+\paragraph[1.2]{ب)}
+$$T(n) = n + max_{1 \le k \le n-1}[T(k) + T(n - k)], \hspace{0.75em} for \hspace{0.75em} n > 1, \hspace{1.5em} T(1) = 0$$
+\paragraph[1.2]{پ)}
+$$T(n) = 2T(\lfloor \sqrt{n} \rfloor) + \log n$$
+\paragraph[1.2]{ت)}
+$$T(n) = T(\frac{n}{3}) + T(\frac{2n}{3}) + n$$
+\end{document}

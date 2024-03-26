@@ -1,0 +1,37 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\settextfont{XB Niloofar}
+
+\begin{document}
+فرض کنید A مجموعه‌ای بزرگ از n عنصر باشد؛
+آنقدر بزرگ که نتوان آن را به طور کامل در حافظه اصلی نگهداری کرد و لازم باشد که آن را روی دیسک نگهداری کرد.
+یک راه برای مرتب کردن چنین مجموعه‌ای، طراحی گونه‌ای از الگوریتم مرتبسازی ادغامی است:
+مجموعه‌ A را به k مجموعه کوچک‌تر $A_1, A_2,\dots, A_k$ تقسیم کنید،
+هر یک از آن مجموعه‌ها را به طور بازگشتی مرتب کنید و سپس همه مجموعه‌های مرتب را با هم ادغام کنید تا مجموعه مرتب اصلی تشکیل شود.
+
+
+
+\paragraph[3.2]{الف)}
+فرض کنید اندازه هر صفحه دیسک b باشد و اندازه حافظه اصلی m باشد.
+با یک مثال توضیح دهید که مقدار k
+( برحسب $b$ و $m$ )
+چند باشد تا بتوان با
+$O(\frac{n}{b})$ عملیات انتقال صفحه
+(خواندن یک صفحه از دیسک یا نوشتن یک صفحه روی دیسک) ، k مجموعه مرتب را با هم ادغام کرد.
+
+\paragraph[3.1]{ب)}
+با تشکیل و حل یک رابطه بازگشتی برای تعداد عملیات انتقال صفحه، ثابت کنید که الگوریتم مرتبسازی ادغامی مجموعه A را با
+$\displaystyle O((\frac{n}{b})\frac{\log(\frac{n}{b})}{\log(\frac{m}{b})})$
+عملیات انتقال صفحه مرتب میکند.
+\end{document}

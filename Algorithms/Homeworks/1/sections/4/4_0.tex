@@ -1,0 +1,34 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\settextfont{XB Niloofar}
+
+\begin{document}
+\paragraph[3.1]{الف)}
+با تحلیل ریاضی، مشخص شده است که اگر اندازه یک جدول درهم‌سازی بسته n باشد و اگر تعداد کلیدها m باشد
+و اگر $\alpha = \frac{n}{m}$ باشد،
+آنگاه میانگین تعداد مقایسه‌های لازم برای جستجوهای ناموفق (یا درجها) در چنین جدولی با راهبرد کاوش خطی، تقریباً
+$\displaystyle \frac{1}{2}(1 + \frac{1}{(1-\alpha)^2})$ خواهد بود.
+
+\paragraph[3.2]{}
+برنامه‌ای بنویسید که با آن بتوان یک جدول درهم‌سازی بسته با اندازه n ساخت و سپس با راهبرد کاوش خطی
+$\frac{n}{2}$ عدد صحیح (کلید) تصادفی را در جدول درج کرد. سپس شمارنده‌ای (یا شمارنده‌هایی) را در برنامه درج کنید
+و با آن، میانگین تعداد مقایسه‌هایی را که برای جستجوهای ناموفق (درج‌ها) در جدول لازم است محاسبه کنید.
+آزمایش را با هر یک از مقادیر $n = 10, 10^2, 10^3, 10^4, 10^5, 10^6$ انجام دهید و نتایج تجربی را با نتایج نظری مقایسه کنید. 
+
+\paragraph[3.1]{ب)}
+این فرضیه مطرح شده است که تعداد مقایسه‌های لازم برای درج m کلید تصادفی با راهبرد کاوش خطی در یک جدول
+درهم‌سازی بسته با اندازه m ، تقریباً برابر با
+$\displaystyle \sqrt{\frac{\pi}{2}}(m^{\frac{3}{2}})$ است.
+با نوشتن برنامه‌ای، درستی این ادعا را تحقیق کنید.
+\end{document}
