@@ -1,0 +1,61 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\settextfont{XB Niloofar}
+
+\begin{document}
+با محاسبه $T(n)$ برای $n$ های کوچک، میتوانیم این رابطه بازگشتی را به صورت
+$T(n) = (n+1)c + nd$ حدس بزنیم:
+\begin{equation}
+    T(0) = c
+\end{equation}
+\begin{equation}
+\begin{split}
+    T(1) = T(k) + T(k) + d \rightarrow k=0 \\
+    T(1) = T(0) + T(0) + d = 2c + d
+\end{split}
+\end{equation} 
+\begin{equation}
+\begin{split}
+    T(2) = T(k) + T(1 - k) + d \rightarrow k=0,1 \\
+    k=0: T(2) = T(0) + T(1) + d = 3c + 2d \\
+    k=1: T(2) = T(1) + T(0) + d = 3c + 2d
+\end{split}
+\end{equation} 
+\begin{equation}
+\begin{split}
+    T(3) = T(k) + T(2 - k) + d \rightarrow k=0,1,2 \\
+    k=0: T(3) = T(0) + T(2) + d = 4c + 3d \\
+    k=1: T(3) = T(1) + T(1) + d = 4c + 3d \\
+    k=1: T(3) = T(2) + T(0) + d = 4c + 3d
+\end{split}
+\end{equation}
+از آنجایی که این رابطه برای $T(1)$ درست است آن‌را حالت پایه در نظر می‌گیریم
+و فرض می‌کنیم این رابطه برای $n-1$ رابطه قبلی درست باشد آنگاه نشان می‌دهیم که برای $n$ نیز درست است:
+\begin{align}
+    T(n) = T(k) + T(n - 1 - k) + d ; \hspace{0.25cm} k=0,1, \dots, n-1 \\
+    k=i < n: T(n) = T(i) + T(n - 1 - i) + d
+\end{align}
+از آنجا که طبق فرض این رابطه برای اعداد کوچکتر از $n$ درست است، داریم:
+\begin{align}
+    T(i) = (i+1)c + id \\
+    T(n-1-i) = (n-1-i+1)c + (n-1-i)d \\
+    T(i) + T(n-1-i) = ((n-1-i+1)+(i+1))c + ((n-1-i) + i)d \\
+    T(i) + T(n-1-i) = (n+1)c + (n-1)d \\
+    \Rightarrow T(n) = T(i) + T(n-1-i) + d = (n+1)c + nd
+\end{align}
+
+بنابراین حکم ثابت شد و از آنجایی که $c$ و $d$ اعداد ثابت اند، داریم:
+$$T(n) = (n+1)c + nd = (c+d)n + c \Rightarrow T(n) \in \theta(n)$$
+
+\end{document}

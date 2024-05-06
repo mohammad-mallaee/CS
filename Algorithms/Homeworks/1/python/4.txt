@@ -1,0 +1,43 @@
+
+Testing unseccussfull search comparisons ...
+
+>> n is 10^1 and alpha is 0.5:
+average uncessufull search comparisons is: 1.6
+in theory the average for search should be: 2.5
+>> n is 10^2 and alpha is 0.5:
+average uncessufull search comparisons is: 2.12
+in theory the average for search should be: 2.5
+>> n is 10^3 and alpha is 0.5:
+average uncessufull search comparisons is: 2.405
+in theory the average for search should be: 2.5
+>> n is 10^4 and alpha is 0.5:
+average uncessufull search comparisons is: 2.4926
+in theory the average for search should be: 2.5
+>> n is 10^5 and alpha is 0.5:
+average uncessufull search comparisons is: 2.48968
+in theory the average for search should be: 2.5
+>> n is 10^6 and alpha is 0.5:
+average uncessufull search comparisons is: 2.497765
+in theory the average for search should be: 2.5
+
+
+Testing unseccussfull add comparisons ...
+
+>> n is 10^1:
+uncessufull add comparisons are 12
+in theory it should be: 39.633272976060105
+>> n is 10^2:
+uncessufull add comparisons are 820
+in theory it should be: 1253.3141373155001
+>> n is 10^3:
+uncessufull add comparisons are 52682
+in theory it should be: 39633.27297606011
+>> n is 10^4:
+uncessufull add comparisons are 2145782
+in theory it should be: 1253314.1373155
+>> n is 10^5:
+uncessufull add comparisons are 35076828
+in theory it should be: 39633272.97606011
+>> n is 10^6:
+uncessufull add comparisons are 1190299018
+in theory it should be: 1253314137.3155

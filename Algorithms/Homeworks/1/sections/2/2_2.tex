@@ -1,0 +1,59 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\settextfont{XB Niloofar}
+
+\begin{document}
+با محاسبه $T(n)$ برای $n$ های کوچک
+در می‌یابیم که $T(n) = n + (n-1) + (n-2) + \dots + 2$.
+برای اثبات این موضوع از استقرای ریاضی استفاده می‌کنیم:
+
+$$T(2) = 2 + max \lbrace T(1) + T(1)\rbrace = 2$$
+
+حالت پایه این تساوی برقرار است بنابراین فرض می‌کنیم این تساوی برای $k-1$
+برقرار است آنگاه نشان می‌دهیم این تساوی برای $k$ نیز برقرار است:
+\begin{equation}
+\begin{split}
+T(k) & = k + max \lbrace T(i) + T(j) : i + j = k, i,j > 0 \rbrace
+\\ & = k + max \lbrace T(1) + T(k-1), T(2) + T(k-2), \dots, T(k-1) + T(1) \rbrace
+\end{split}
+\end{equation}
+
+از آنجایی که $T(1) = 0$
+کافی است نشان دهیم :
+$$T(k-1) > T(i) + T(j) ; \hspace{0.15cm} i+j = k \And i,j < k-1$$
+\begin{equation}
+\begin{split}        
+    T(k-1) = (k-1) + (k-2) + \dots + 2 \\
+    T(i)= i + (i-1) + (i-2) + \dots + 2 \\
+    T(j) = j + (j-1) + (j-2) + \dots + 2
+\end{split}
+\end{equation}
+
+\begin{equation}
+    T(i) + T(j) = 2 \times ( 2 + 3 + \dots + min(i, j)) + min(i,j) + 1 + \dots + max(i,j)
+\end{equation}
+\begin{equation}
+    T(k-1) - \lbrack T(i) + T(j) \rbrack = (max(i,j) + 1) + \dots + (k - 1)- (2 + 3 + \dots + min(i, j))
+\end{equation}
+با توجه به اینکه $i + j = k$
+بنابراین تعداد اعداد مثبت و منفی در این معادله برابر است و از آنجایی که هر عدد مثبت از هر
+عدد منفی بزرگتر است حکم ثابت شد و برای هر $n$ بزرگتر از $1$
+داریم:
+\begin{equation}
+    \begin{split}
+        T(n) = n + T(n-1) = n + (n-1) + (n-2) + \dots + 2 = \frac{(n-1)(n+2)}{2}
+        \\ \rightarrow T(n) \in \theta(n^2)
+    \end{split}
+\end{equation}
+\end{document}

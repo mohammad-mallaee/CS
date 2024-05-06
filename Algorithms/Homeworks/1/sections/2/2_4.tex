@@ -1,0 +1,33 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\settextfont{XB Niloofar}
+
+\begin{document}
+می‌توانیم با استفاده از درخت فراخوانی‌های بازگشتی، مرتبه رشد این تابع بازگشتی را مشخص کنیم.
+در ابتدا این مسئله به دوقسمت نامساوی با اندازه‌های یک سوم و دو سوم مسئله اصلی تقسیم شده‌اند.
+دو مرحله از این تابع بازگشتی به صورت زیر خواهد بود:
+\begin{align}
+T(n) = T(\frac{n}{3}) + T(\frac{2n}{3}) + n \\
+= T(\frac{n}{9}) + T(\frac{2n}{9}) + \frac{n}{3} + T(\frac{2n}{9}) + T(\frac{4n}{9}) + \frac{n}{3} + n
+\end{align}
+همانطور که می‌بینیم در هر مرحله به اندازه تابع، $n$ واحد اضافه می‌شود
+و این کار تا زمانی که تقسیم های ما به پایان برسد ادامه می‌یابد.
+از آنجایی که در این مسئله، تقسیم به زیر مسئله‌ها به صورت نامتوازن است، طبیعتا درخت متناظر آن نیز همینطور خواهد بود.
+اضافه شدن $n$ تا زمانی که به انتهای کوچکترین مسیر برسیم ادامه خواهد یافت
+و این امر هنگامی که مسئله را به یک سوم مسئله اصلی تقسیم می‌کنیم اتفاق می‌افتد
+و انجام این کار $log_3(n)$ بار اتفاق می‌افتد.
+بنابراین اندازه تابع حداقل $n log_3(n)$ خواهد بود و پس از آن
+مقادیری کمتر از آن به تابع اضافه می‌شوند بنابراین داریم:
+$$T(n) \in \Omega(nlog_3(n))$$
+\end{document}

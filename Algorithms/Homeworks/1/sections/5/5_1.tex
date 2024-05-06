@@ -1,0 +1,31 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\settextfont{XB Niloofar}
+
+\begin{document}
+پس از مرتب کردن همه‌ی زیر آرایه‌های آرایه $A$
+برای ادغام آن ها و ساخت زیرآرایه بزرگتر می‌توانیم از الگوریتم $k\_way\_merge$
+استفاده کنیم در این الگوریتم هر صفحه اشغال شده توسط این آرایه را یکبار برای خواندن از
+دیسک می‌گیریم و برای به اندازه‌ی تعداد صفحات اشغال شده نیز برای نوشتن به دیسک می‌فرستیم
+بنابراین در هر مرحله ادغام $\displaystyle \frac{2n}{b}$ عملیات انتقال صفحه خواهیم داشت.
+برای اینکه با $O(\frac{n}{b})$ عملیات انتقال صفحه این آرایه را مرتب کنیم، 
+باید تعداد مراحل اندازه‌ای ثابت و یا در حالت ایده‌ال یک مرحله باشند.
+با در نظر گرفتن این موضوع که اندازه هر زیرآرایه باید از اندازه حافظه اصلی کوچکتر باشد،
+بنابراین $\displaystyle k > \frac{n}{m}$ خواهد بود.
+از طرفی برای اینکه بتوانیم $k$ زیرآرایه را در یک مرحله ادغام کنیم، باید بتوانیم حداقل
+یک صفحه از هر یک آز آن‌ها را در هر لحظه در حافظه اصلی داشته باشیم و این به این معناست که
+$\displaystyle k < \frac{m}{b}$. می‌توانیم مقدار $k$ را $\displaystyle \frac{m}{b} - 1$
+در نظر بگیریم تا حداکثر تعداد زیرآرایه را در هر مرحله باهم ادغام کنیم.
+
+\end{document}

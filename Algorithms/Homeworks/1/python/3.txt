@@ -1,0 +1,29 @@
+length of A and B is 10^1
+A and B are not equal
+a_access: 10, b_access: 2, assigns: 10
+helper_access: 2, comparisons: 2
+
+length of A and B is 10^2
+A and B are not equal
+a_access: 100, b_access: 1, assigns: 100
+helper_access: 1, comparisons: 1
+
+length of A and B is 10^3
+A and B are not equal
+a_access: 1000, b_access: 2, assigns: 1000
+helper_access: 2, comparisons: 2
+
+length of A and B is 10^4
+A and B are not equal
+a_access: 10000, b_access: 2, assigns: 10000
+helper_access: 2, comparisons: 2
+
+length of A and B is 10^5
+A and B are not equal
+a_access: 100000, b_access: 1, assigns: 100000
+helper_access: 1, comparisons: 1
+
+length of A and B is 10^6
+A and B are not equal
+a_access: 1000000, b_access: 1, assigns: 1000000
+helper_access: 1, comparisons: 1

@@ -1,0 +1,42 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\settextfont{XB Niloofar}
+
+\begin{document}
+\includegraphics*[scale=0.35]{switch_graph.jpeg}
+\begin{latin}
+\begin{lstlisting}
+    [inf, 5, 5, 5, 5, 5, 5, 4, 4, 5, 3, 5, 5, 5, 4, 4, 4, 5, 4, 4]
+    [5, inf, 7, 8, 7, 7, 7, 4, 4, 7, 3, 5, 6, 5, 4, 4, 4, 5, 4, 4]
+    [5, 7, inf, 7, 9, 9, 8, 4, 4, 9, 3, 5, 6, 5, 4, 4, 4, 5, 4, 4]
+    [5, 8, 7, inf, 7, 7, 7, 4, 4, 7, 3, 5, 6, 5, 4, 4, 4, 5, 4, 4]
+    [5, 7, 9, 7, inf, 9, 8, 4, 4, 10, 3, 5, 6, 5, 4, 4, 4, 5, 4, 4]
+    [5, 7, 9, 7, 9, inf, 8, 4, 4, 9, 3, 5, 6, 5, 4, 4, 4, 5, 4, 4]
+    [5, 7, 8, 7, 8, 8, inf, 4, 4, 8, 3, 5, 6, 5, 4, 4, 4, 5, 4, 4]
+    [4, 4, 4, 4, 4, 4, 4, inf, 10, 4, 3, 4, 4, 4, 7, 7, 7, 4, 7, 5]
+    [4, 4, 4, 4, 4, 4, 4, 10, inf, 4, 3, 4, 4, 4, 7, 7, 7, 4, 7, 5]
+    [5, 7, 9, 7, 10, 9, 8, 4, 4, inf, 3, 5, 6, 5, 4, 4, 4, 5, 4, 4]
+    [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, inf, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+    [5, 5, 5, 5, 5, 5, 5, 4, 4, 5, 3, inf, 5, 9, 4, 4, 4, 9, 4, 4]
+    [5, 6, 6, 6, 6, 6, 6, 4, 4, 6, 3, 5, inf, 5, 4, 4, 4, 5, 4, 4]
+    [5, 5, 5, 5, 5, 5, 5, 4, 4, 5, 3, 9, 5, inf, 4, 4, 4, 10, 4, 4]
+    [4, 4, 4, 4, 4, 4, 4, 7, 7, 4, 3, 4, 4, 4, inf, 7, 7, 4, 7, 5]
+    [4, 4, 4, 4, 4, 4, 4, 7, 7, 4, 3, 4, 4, 4, 7, inf, 11, 4, 8, 5]
+    [4, 4, 4, 4, 4, 4, 4, 7, 7, 4, 3, 4, 4, 4, 7, 11, inf, 4, 8, 5]
+    [5, 5, 5, 5, 5, 5, 5, 4, 4, 5, 3, 9, 5, 10, 4, 4, 4, inf, 4, 4]
+    [4, 4, 4, 4, 4, 4, 4, 7, 7, 4, 3, 4, 4, 4, 7, 8, 8, 4, inf, 5]
+    [4, 4, 4, 4, 4, 4, 4, 5, 5, 4, 3, 4, 4, 4, 5, 5, 5, 4, 5, inf]    
+\end{lstlisting}
+\end{latin}
+\end{document}

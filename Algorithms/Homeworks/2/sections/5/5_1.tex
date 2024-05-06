@@ -1,0 +1,41 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\settextfont{XB Niloofar}
+
+\begin{document}
+این مساله را می‌توان به مسئله کوتاه‌ترین مسیر بین هر دو نقطه گراف تشبیه کرد که آن را
+با استفاده از الگوریتم فلوید حل می‌کنیم. می‌توانیم با تغییر شرط آن
+به الگوریتمی دست‌یابییم که این مسئله را برای ما حل کند.
+
+فرض می‌کنیم در روند حل مسئله و در مرحله $k$ ام الگوریتم فلوید هستیم،
+اگر از راس $i$ به راس $j$ بدون گذر از راس $k$ مسیری باشد، پهنای باند آن‌را $b^{(k-1)}_{ij}$ می‌نامیم.
+حال اگر با استفاده از راس $k$ به عنوان راس میانی، مسیری از راس $i$ به $j$ پیدا کنیم،
+پهنای باند آن برابر است با مسیری که پهنای باند آن کمتر است یا $min\lbrace b^{(k-1)}_{ik}, b^{(k-1)}_{kj} \rbrace$
+بنابراین حداکثر پهنای باند میان این دو راس در مرحله $k$ ام بصورت زیر است:
+$$b^{(k)}_{ij} = max \lbrace \: b^{(k-1)}_{ij},\: min\lbrace b^{(k-1)}_{ik}, b^{(k-1)}_{kj} \rbrace \; \rbrace$$
+حال با توجه به این شرط و الگوریتم فلوید، پیاده سازی این الگوریتم به شکل زیر خواهد بود:
+\begin{latin}
+\begin{lstlisting}[language=python]
+def max_bandwith(table):
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                table[i][j] = max(D[i][j], min(table[i][k], table[k][j]))
+\end{lstlisting}
+\end{latin}
+برای بدست آوردن مقادیر صحیح، پهنای باند هر راس و خودش را بی‌نهایت و
+پهنای باند دو راس که مسیری بینشان نیست را صفر در نظر می‌گیریم.
+از طرفی می‌توانیم با استفاده از الگوریتم دایکسترا، این مقادیر را با تغییر شرط الگوریتم و
+برای هر گره جداگانه محاسبه و در ماتریس ذخبره کنیم.
+\end{document}

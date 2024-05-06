@@ -1,0 +1,48 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\settextfont{XB Niloofar}
+
+\begin{document}
+برای حل این بخش می‌توانیم از قاعده همواری استفاده کنیم. از آنجایی که در هر مرحله جذر $n$
+را محسابه می‌کنیم و از آن کف می‌گیریم، می‌تواینم فرض کنیم که $n = 2^{2^k}$،
+در این صورت می‌توانیم این رابطه بازگشتی را ساده‌تر کنیم و آن‌را حل کنیم:
+\begin{align}
+    T(2^{2^k}) = 2T(2^{2^k-1}) + log(2^{2^k}) = 2T(2^{2^{k-1}}) + 2^k log(2) = 2T(2^{2^{k-1}}) + 2^k \\
+    = 2 \times \lbrack 2T(2^{2^{k-2}}) + 2^{k-1}\rbrack + 2^k
+    = 2^2T(2^{2^{k-2}}) + 2 \times 2^k \\
+    = 2^3T(2^{2^{k-3}}) + 3 \times 2^k = \dots = 2^kT(2^{2^{k-k}}) + k \times 2^k \\
+    = 2^k T(2) + k \times 2^k
+\end{align}
+از طرفی داریم :
+\begin{align}
+    n = 2^{2^k} \rightarrow 2^k = log(n) \\
+    \rightarrow k = log(log(n))
+\end{align}
+بنابراین:
+\begin{align}
+    T(n) = log(n) \times T(2) + log(log(n)) \times log(n) \\
+    \rightarrow T(n) \in \theta (log(log(n)) \times log(n))
+\end{align}
+
+\paragraph[2.3.2]{روش دوم}
+می‌توانیم برای حل این سوال از قضیه اصلی نیز استفاده کنیم بدین صورت که با استفاده از تغییر متغیر،
+شکل رابطه بازگشتی را عوض کرده و آن را با قضیه اصلی حل می‌کنیم. برای این کار ابتدا فرض می‌کنیم $n = 2^k$
+بنابراین داریم:
+\begin{align}
+    T(n) = T(2^k) = S(k) \\
+    S(k) = 2S(k/2) + k \\
+    \xrightarrow{master\;theorem} S(k) \in k\log(k) \\
+    \rightarrow T(n) \in log(log(n)) \times log(n)
+\end{align}
+\end{document}
