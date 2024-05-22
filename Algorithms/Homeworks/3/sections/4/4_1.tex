@@ -1,0 +1,53 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\settextfont{XB Niloofar}
+
+\begin{document}
+این مسئله را می‌توانیم با تبدیل کردن آن به یک مسئله جریان بیشینه و سپس با استفاده از
+تکنیک تکرار و بهبود حل کنیم بدین صورت که ابتدا جریان بیشینه‌ای که میتوانیم از راس ۱ به راس $n$
+بفرستیم پیدا می‌کنیم، اگر مقدار این جریان کمتر از $f$ باشد، این سوال جواب نخواهد داشت
+اما اگر برابر $f$ باشد، یعنی حداقل یک جواب احتمالی برای این سوال داریم.
+پیدا کردن جواب مسئله جواب بیشینه را می‌توانیم با الگوریتم $ford-fulkerson$
+پیدا کنیم که قبلا درباره آن بحث شده است.
+
+پس از پیدا کردن این جواب باید با استفاده از تکنیک تکرار و بهبود جواب را تا جایی که
+امکان دارد بهبود ببخشیم تا جواب بهینه را پیدا کنیم. این روند بدین صورت خواهد بود که ما باید
+با استفاده از مسیر فعلی مسیری را پیدا کنیم که همین مقدار جریان را اما با هزینه‌ای کمتر به مقصد می‌رساند.
+
+الگوریتم بدین صورت خواهد بود که باید به جای مسیر‌های جریان افزا، دور‌های جریان افزایی را
+پیدا کنیم که ارسال جریان از آن‌ها هزینه کمتری دارد یعنی نه تنها باید دور جریان افزا پیدا کنیم که به جای
+ارسال جریان از مسیر فعلی، از طرف دیگر این جریان را ارسال کنیم، باید این دور جریان افزا
+هزینه‌ی ارسال را کاهش نیز دهد. دلیل بهینه بودن این الگوریتم قضیه‌ای است که به همین موضوع اشاره می‌کند
+و اثبات آن خارج از موضوع این سوال خواهد بود:
+
+با در نظر گرفتن گراف $G = <V, E>$ با $u_{ij}$ که ظرفیت یال را مشخص می‌کند و $c{ij}$
+که هزینه ارسال از این یال را مشخص می‌کند، جریان ارسال کمترین هزینه را دارد اگر و تنها اگر 
+دور جریان افزایی که وزن آن منفی است وجود نداشته باشد.
+
+شبه کد الگوریتم به صورت زیر خواهد بود:
+\begin{latin}
+    \begin{algorithm}[H]
+        \caption*{MinCostFlow($G = <V, E>$, $U = \lbrace u_{ij} \rbrace$, $C = \lbrace c_ij \rbrace$)}
+        \begin{algorithmic}
+            \Require A graph G, its edge capacities and their cost
+            \Ensure Minimum Cost Flow
+            \State Find the maximum flow of graph G
+            \State Cost = cost of transferring flow through maximum flow answer
+            \While{there is an f-augmenting cycle C with negative total weight}
+                \State Update Cost and flow of nodes and edges with new values
+            \EndWhile
+        \end{algorithmic}
+    \end{algorithm}
+\end{latin}
+\end{document}

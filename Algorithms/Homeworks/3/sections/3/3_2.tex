@@ -1,0 +1,55 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\settextfont{XB Niloofar}
+
+\begin{document}
+پیاده‌سازی این الگوریتم بسیار شبیه مسئله اصلی است با این تفاوت که
+ممکن است برای یکی از مرد‌ها یا زن‌ها زوجی پیدا نشود که تنها شرط توقف را تغییر می‌دهد.
+\begin{latin}
+\begin{lstlisting}[language=python]
+def extended_stable_matche(W, M):
+    men_last_propose = {}
+    w_partners = {}
+
+    free_mens = list(M.keys())
+    for man in free_mens:
+        men_last_propose[man] = -1
+
+    while len(free_mens) > 0:
+        man = free_mens[0]
+        i = men_last_propose[man]
+        while i < len(M[man]) - 1:
+            i += 1
+            woman = M[man][i]
+            woman_partner = w_partners.get(woman, None)
+            if woman_partner is None:
+                w_partners[woman] = man
+                free_mens.remove(man)
+                break
+            elif prefers(W, woman, man, woman_partner):
+                free_mens.append(woman_partner)
+                free_mens.remove(man)
+                w_partners[woman] = man
+                break
+        if i == len(M[man]) - 1:
+            free_mens.remove(man)
+        men_last_propose[man] = i
+    return w_partners
+\end{lstlisting}
+\end{latin}
+در اینجا پس از حلقه $while$ درونی، اگر یک مرد به همه‌ی زن‌هایی که
+در لیست ترجیحاتش قرار دارند درخواست داده‌باشد، چون این موضوع که همه‌ی مرد‌ها با یک نفر ازدواج
+کنند تضمین شده نیست، او را از لیست مردان آزاد حذف می‌کنیم تا شرط توقف برقرار شود.
+در غیر اینصورت او هربار لیست مردان خالی نیست و برنامه توقف ناپذیر خواهد شد.
+\end{document}

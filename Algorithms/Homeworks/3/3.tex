@@ -1,0 +1,150 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6.25in, 8.3in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\usepackage{mathtools}
+
+\settextfont{XB Niloofar}
+\algrenewcommand{\algorithmicrequire}{\textbf{Input:}}
+\algrenewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+\include{info}
+\begin{center}
+
+    \includegraphics[scale=0.2]{./UILogo.png}
+    
+    \University \\
+    \Department\\
+    
+    
+    \begin{large}
+    \vspace{0.5cm}
+    
+    \end{large}
+    
+    \vspace{1cm}
+    \begin{latin}
+        {\Large\textbf\EnglishCourseTitle}
+    \end{latin}
+    \begin{center}
+        \CourseName
+    \end{center}
+
+    \Large\textbf{محمد ملائی}
+    
+    \vspace{1cm}
+    {عنوان:}\\[0.5em]
+    {\LARGE\textbf{\CourseReportTitle}}\\ 
+    
+    \vspace{1.25cm}
+    
+    {\large\textbf{\courseSemester}}
+
+    \vspace{1cm}
+    {نام استاد درس}\\[0.5em]
+    {\large\textbf{\CourseProfessor}}
+    
+    \vspace{1.2cm}
+
+    \pagebreak
+    
+    \end{center}
+\section*{تمرین ۱}
+\subfile{sections/1/1_0.tex}
+\subsection*{\color{blue}{جواب}}
+\subsubsection*{الف}
+\subfile{sections/1/1_1.tex}
+\subsubsection*{ب}
+\subfile{sections/1/1_2.tex}
+
+% \subsection*{\color{red}{مراجع}}
+% \begin{latin}
+% \href{https://docs.python.org/3/library/itertools.html}{python documentations -- itertools}
+% \end{latin}
+
+\pagebreak
+\section*{تمرین ۲}
+\subfile{sections/2/2_0.tex}
+\subsection*{\color{blue}{جواب}}
+\subsection*{الف}
+\subfile{sections/2/2_1.tex}
+\subsection*{ب}
+\subfile{sections/2/2_2.tex}
+% \begin{latin}
+% \href{https://cs.stackexchange.com/questions/136466/how-to-solve-recursion-tn-tn-3-t2n-3-n}{solving recursion - statckexchange}
+% \end{latin}
+
+\pagebreak
+\section*{تمرین ۳}
+\subfile{sections/3/3_0.tex}
+\subsection*{\color{blue}{جواب}}
+\subsection*{الف}
+\subfile{sections/3/3_1.tex}
+\subsection*{ب}
+\subfile{sections/3/3_2.tex}
+\\
+\begin{latin}
+\href{https://www.cs.csustan.edu/~john/Classes/CS4440/Notes/01A_StableMatch/01A_StableMatch.html}{-stable matching problem-}
+\end{latin}
+
+
+\pagebreak
+\section*{تمرین ۴}
+\subfile{sections/4/4_0.tex}
+\subsection*{\color{blue}{جواب}}
+\subfile{sections/4/4_1.tex}
+\begin{latin}
+    \href{https://www.youtube.com/watch?v=0tjpC0MCwY8l}{-YouTube-}
+\end{latin}
+
+\pagebreak
+\section*{تمرین ۵}
+\subfile{sections/5/5_0.tex}
+\subsection*{\color{blue}{جواب}}
+\subsection*{الف}
+\subfile{sections/5/5_1.tex}
+\subsection*{ب}
+\subfile{sections/5/5_2.tex}
+\subsection*{\color{red}{مراجع}}
+\begin{latin}
+    \href{https://github.com/anxiaonong/Maxflow-Algorithms/blob/master/Ford-Fulkerson%20Algorithm.py}{Ford-Fulkerson github}
+\end{latin}
+
+\end{document}

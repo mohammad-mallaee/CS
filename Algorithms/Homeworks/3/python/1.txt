@@ -1,0 +1,14 @@
+n = 20, execution: 0.00131221
+n = 40, execution: 0.0058578
+n = 60, execution: 0.011902
+n = 80, execution: 0.02445478
+n = 100, execution: 0.04363322
+n = 120, execution: 0.07302938
+n = 140, execution: 0.11416078
+n = 160, execution: 0.16694379
+n = 180, execution: 0.23424001
+n = 200, execution: 0.3173264
+n = 220, execution: 0.41943684
+n = 240, execution: 0.54057956
+n = 260, execution: 0.6872694
+n = 280, execution: 0.86881361
