@@ -1,0 +1,32 @@
+alphabet = 01, length = 5
+forbidden = ['001', '11']
+Generated 6 strings
+strings = ['00000', '01000', '01010', '10000', '10100', '10101']
+3.5e-05 seconds
+
+alphabet = 01, length = 20
+forbidden = ['0101', '1100']
+Generated 67483 strings
+0.18099 seconds
+
+alphabet = abc, length = 5
+forbidden = ['aa', 'acb', 'abcabc', 'b']
+Generated 13 strings
+strings = ['acaca', 'acacc', 'accac', 'accca', 'acccc', 'cacac', 'cacca', 'caccc', 'ccaca', 'ccacc', 'cccac', 'cccca', 'ccccc']
+0.000417 seconds
+
+alphabet = abc, length = 25
+forbidden = ['aabb', 'b', 'ccaa']
+Generated 5600910 strings
+16.842465 seconds
+
+alphabet = 123456, length = 12
+forbidden = ['1', '2', '3', '45']
+Generated 121393 strings
+0.333522 seconds
+
+alphabet = abcdefghijklmnopqrstuvwxyz, length = 5
+forbidden = ['hello', 'ae', 'ua', 'akw']
+Generated 11741131 strings
+8.276327 seconds
+

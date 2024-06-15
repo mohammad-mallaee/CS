@@ -1,0 +1,39 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\settextfont{XB Niloofar}
+
+\begin{document}
+ابتدا مساله را بصورت دقیق‌تر توصیف می‌کنیم:
+اگر مجموعه همه‌ی کالاها را $P$ بنامیم، داریم $P = \lbrace p_1, p_2, \dots, p_n \rbrace$.
+کالاهایی که هر مشتری خریده‌است را با $C_i$ نشان می‌دهیم به طوری که $C_i \subseteq P$.
+بنابراین مجموعه کالاهای خریداری شده توسط مشتری‌ها را $C = \lbrace C_1, \dots C_n \rbrace$
+تعریف می‌کنیم. جواب مسئله مجموعه $S$ خواهد بود و داریم:
+$$ S = \lbrace S_i \; | \; S_i \in C \rbrace ; \; \forall S_j, S_k: S_j \cap S_k = \emptyset $$
+
+برای اینکه نشان دهیم این مسئله در رده $NPC$ است،
+می‌توانیم یکی از مسائل این رده را به این مسئله تبدیل کنیم.
+برای این کار مسئله مجموعه مستقل را انتخاب می‌کنیم بدین صورت که:
+گراف $G = <V, E>$ را در نظر می‌گیریم، جواب مسئله بزرگترین زیر مجموعه
+$V' \subseteq V$
+از رئوس گراف است به طوری که هیچ یک از دو راس این مجموعه با یالی به هم وصل نباشند.
+
+با پیمایش گراف $G$، به ازای هر راس یک مجموعه از یال‌های متصل به آن می‌سازیم
+بدین معنی که هر راس یک مشتری و هر یال نشان دهنده یک نوع کالا و اتصال دو راس با یک یال
+نشان دهنده‌ی خرید یک کالا توسط دو مشتری خواهد بود.
+با این توضیحات، مجموعه ساخته شده همان مجموعه $C$ خواهد بود و
+حل آن، جواب مسئله مجموعه مستقل را به ما می‌دهد
+یعنی مجموعه $S$.
+
+بنابراین این مسئله نیز در رده $NPC$ است.
+\end{document}

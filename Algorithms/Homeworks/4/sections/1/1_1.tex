@@ -1,0 +1,54 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath, mathtools}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\settextfont{XB Niloofar}
+
+\begin{document}
+ابتدا مسائل ۱ و ۲ را به صورت دقیقتر بیان می‌کنیم.
+\\
+سه مجموعه $A = \lbrace a_1, a_2, \dots, a_n \rbrace$ و
+$B = \lbrace b_1, b_2, \dots, b_n \rbrace$ و
+$C = \lbrace c_1, c_2, \dots, c_n \rbrace$ را در نظر می‌گیریم.
+$D = A \cup B \cup C$ که آن را از آنجایی که این سه مجموعه متمایز اند بصورت
+$D = \lbrace d_1, d_2, \dots, d_{3n} \rbrace$ می‌نویسیم.
+مجموعه جواب را $P$ می‌نامیم و آن را
+به صورت $P = \lbrace p_1, p_2, \dots, p_{n} \rbrace$ تعریف می‌کنیم
+به طوری که $p_i$ یک سه تایی است و $T = \lbrace t_1, t_2, \dots, t_m \rbrace$،
+که طبق صورت سوال $P \subseteq T \subseteq A \times B \times C$.
+
+با توجه به تعاریف بالا، بیان مسئله به شکل زیر خواهد بود:
+$$\forall d \in D \; \exists! \; p \in P : d \in p$$
+
+در مساله دوم ماتریس $A$ را به شکل $A = \lbrack a_{ij} \rbrack ; \: a_{ij} = 0, 1$
+تعریف می‌کنیم و از آنجایی که به ازای بردار صفر-یک $x$ داریم $Ax = 1$،
+دستگاه معادلات به شکل زیر خواهد بود:
+\begin{align*}
+    a_{11}x_1+a_{12}x_2 + \dots + a_{1n}x_n &= \,1 \\
+    a_{21}x_1+a_{22}x_2 + \dots + a_{2n}x_n &= \,1 \\
+    & \vdots \\
+    a_{m1}x_1+a_{m2}x_2 + \dots + a_{mn}x_n &= \,1 \\
+\end{align*}
+از آنجایی که ماتریس $A$ و بردار $x$ صفر-یک هستند،
+در هریک از معادلات تنها یک جمله می‌تواند یک باشد و بقیه صفر خواهند بود بنابراین بیان این مساله
+به شکل زیر خواهد بود:
+$$\forall i \; \exists! \; j : a_{ij}x_j = 1, \; i = 1, \dots, m, j = 1, \dots, n$$
+
+پس از بیان دقیق‌تر مسائل، حال باید نحوه تبدیل مسئله ۱ به مسئله ۲ را بیان کنیم.
+
+ماتریس $A$ را بدین صورت تعریف می‌کنیم که:
+$$A = [a_{ij}]; a_{ij} = 1 \; if \; d_i \in t_j \; else \; 0$$
+بدین معنا که اگر عضو $i$ ام $D$
+در عضو $j$ ام $T$ باشد، آنگاه $a_{ij} = 1$ و در غیر این صورت $a_{ij} = 0$ است.
+حال پس از حل دستگاه، $n$-بردار $x$، جواب مسئله اول است و ۱ بودن درایه $k$ ام آن
+نشان دهنده حضور $t_k$ در $P$ است.
+\end{document}

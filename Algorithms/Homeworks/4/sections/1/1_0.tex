@@ -1,0 +1,67 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\settextfont{XB Niloofar}
+
+\begin{document}
+این سه مسأله را (که هر سه در رده NPC هستند) در نظر بگیرید:
+\begin{itemize}
+    \item \textbf{مسأله 1}:
+    فرض کنید $A$ و $B$ و $C$ 
+    سه مجموعه مجزای $n$ عنصری
+    و $T \subseteq A \times B \times C$
+    مجموعه‌ای از سه‌تایی‌های مرتب باشد.
+    زیرمجموعه‌ای از $n$ سه‌تایی را
+    (در صورت وجود) در $T$ بیابید
+    که هر عنصر در $A \cup B \cup C$ ،
+    در  دقیقاً یکی از آن $n$ سه‌تایی قرار داشته باشد.
+
+    \item \textbf{مسأله 2}:
+    با این فرض که ماتریس $A$
+    یک ماتریس صفر-یک $m \times n$ و
+    $
+    1 = 
+    \left[
+    \begin{matrix}
+        1 \\
+        \vdots \\
+        1
+    \end{matrix}  
+    \right]
+    $
+    بردار $m$ بعدی تمام 1 باشد،
+    بردار مجهول صفر-یک
+    $
+    x = 
+    \left[
+    \begin{matrix}
+        x_1 \\
+        \vdots \\
+        x_n
+    \end{matrix}  
+    \right]
+    $
+    (در صورت وجود)
+    بیابید که معادله ماتریسی $Ax = 1$ برقرار شود.
+
+    \item \textbf{مسأله 3}:
+    مجموعه $S$ از $n$ عدد صحیح،
+    و عدد صحیح $d$ داده شده است؛
+    زیرمجموعه‌ای از مجموعه $S$ را
+    (در صورت وجود) بیابید که مجموع اعداد آن برابر با $d$ باشد.
+\end{itemize}
+\paragraph*{الف}
+نشان دهید که مسأله 1 را میتوان به مسأله 2 تبدیل کرد.
+\paragraph*{ب}
+نشان دهید که مسأله 2 را میتوان به مسأله 3 تبدیل کرد.
+\end{document}
