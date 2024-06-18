@@ -1,0 +1,30 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\settextfont{XB Niloofar}
+
+\begin{document}
+این مسأله را در نظر بگیرید: تابع پیوسته صعودی $f$ و مقدار $y$ و بازه باز $(a, b)$ مشخص شده‌اند. 
+مقدار $x$ ای را در بازه باز $(a, b)$ بیابید که $f(x) = y$ باشد.
+(تابعی مانند $f(x) = x^3 + x - 100$ در کل دامنه‌اش یعنی در کل بازه $(-\infty, \infty)$ صعودی است.
+اما اگر تابعی در کل دامنه‌اش صعودی نباشد، کافی است که در بازه مورد نظر صعودی باشد.
+مثلاً تابع $f(x) = sin(x)$ در بازه  صعودی است و در بازه $(0, \frac{\pi}{2})$ نزولی است.)
+
+\paragraph*{الف}
+الگوریتمی کارا را برای حل این مسأله توصیف کنید.
+
+\paragraph*{ب}
+برنامه‌ای برای حل تقریبی مسأله بنویسید. 
+آستانه‌ای برای حداکثر میزان خطا تعیین کنید و درستی برنامه‌تان را با چند تابع پیوسته 
+(که در بازه‌های مورد نظر صعودی باشند) بیازمایید.
+\end{document}

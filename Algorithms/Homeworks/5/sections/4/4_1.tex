@@ -1,0 +1,36 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\settextfont{XB Niloofar}
+
+\begin{document}
+برای حل این مسئله  کافی‌است آن را به مسئله پیدا کردن ریشه تبدیل کنیم
+سپس با الگوریتم‌هایی مانند دوبخشی یا نابجایی حل کنیم که هر دو کارا هستند.
+تابع $g$ را تعریف می‌کنیم به طوری که :
+$$g(x) = f(x) - y$$
+پس از تبدیل مسئله خواهیم داشت:
+\begin{equation}
+    g(a) = f(a) - y, \; g(b) = f(b) - y
+\end{equation}
+
+اگر $f$ در بازه مورد نظر شرط زیر را داشته باشده آنگاه طبق قضیه میانی مسئله اول دارای جواب است:
+\begin{align}
+    f(a) < y < f(b)
+\end{align}
+پس داریم:
+\begin{align}
+    \rightarrow f(a) - y < y - y < f(b) - y \\
+    (1) \longrightarrow g(a) < 0 < g(b)
+\end{align}
+بنابراین مسئله دوم نیز جواب خواهد داشت و جواب آن با مسئله اول برابر خواهد بود.
+\end{document}

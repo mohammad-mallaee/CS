@@ -1,0 +1,40 @@
+N = 5
+Nearest Neighbor: 181 -- time: 8e-06
+TWO_OPT: 180 -- time: 2.4e-05
+
+N = 10
+Nearest Neighbor: 366 -- time: 1.4e-05
+TWO_OPT: 366 -- time: 7.2e-05
+
+N = 20
+Nearest Neighbor: 466 -- time: 4.4e-05
+TWO_OPT: 450 -- time: 0.000935
+
+N = 30
+Nearest Neighbor: 605 -- time: 0.000102
+TWO_OPT: 541 -- time: 0.005498
+
+N = 50
+Nearest Neighbor: 823 -- time: 0.00024
+TWO_OPT: 793 -- time: 0.010689
+
+N = 100
+Nearest Neighbor: 1412 -- time: 0.000878
+TWO_OPT: 1377 -- time: 0.102146
+
+N = 200
+Nearest Neighbor: 2401 -- time: 0.00365
+TWO_OPT: 2346 -- time: 0.78668
+
+N = 300
+Nearest Neighbor: 3405 -- time: 0.010927
+TWO_OPT: 3339 -- time: 2.698994
+
+N = 500
+Nearest Neighbor: 5446 -- time: 0.040208
+TWO_OPT: 5394 -- time: 8.617581
+
+N = 1000
+Nearest Neighbor: 10414 -- time: 0.434724
+TWO_OPT: 10377 -- time: 30.000081
+

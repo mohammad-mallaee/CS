@@ -1,0 +1,52 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\settextfont{XB Niloofar}
+
+\begin{document}
+مسئله را با این فرض حل می‌کنیم که اگر دو بازه $p_1, p_2$ داشته باشیم که باهم تداخل دارند،
+و $P_1$ مجموعه تمام بازه‌هایی باشد که $p_1$ با آنها تداخل دارد،
+اگر $p_2$ با همه‌ی اعضای این مجموعه و احتمالا تعدادی بازه دیگر که در این مجموعه نیستند
+تداخل داشته باشد، تنها $p_2$ می‌تواند در جواب حضور داشته باشد.
+(البته با فرض اینکه بازه‌ی دیگری که همین وضعیت را با $p_2$ داشته باشد، نداشته باشیم،
+در غیر اینصورت آن بازه انتخاب خواهد شد).
+چرا که اگر آن را به عنوان بازه‌ی ناظر در نظر بگیریم همه‌ی مجموعه $P_1$ را پوشش خواهد داد.
+
+حال با دانستن این موضوع الگوریتم را ارائه می‌دهیم:
+\begin{latin}
+    \begin{algorithm}[H]
+        \caption*{OptimalCommittee($R = \lbrace r_1, \ldots, r_n \rbrace$)}
+        \begin{algorithmic}
+            \Require A set of shift periods $R$
+            \Ensure Optimal set of shifts to create a committee
+            \State Copy R to S
+            \For{i = 1 to n}
+                \State $R_i = \lbrace r \in R \; | \; r \; intersest \; r_i \rbrace$
+                \State remove = true
+                \For{$s \in S - \lbrace r_i \rbrace$}
+                    \For{$r \in R_i$}
+                        \If{s does not intersect with r}
+                            \State remove = false
+                            \State break
+                        \EndIf
+                    \EndFor
+                \EndFor
+                \If{remove}
+                    \State remove $r_i$ from S
+                \EndIf
+            \EndFor
+            \State \Return S
+        \end{algorithmic}
+    \end{algorithm}
+\end{latin}
+\end{document}

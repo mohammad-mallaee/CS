@@ -1,0 +1,38 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\settextfont{XB Niloofar}
+
+\begin{document}
+فرض می‌کنیم $S$ مجموع وزن همه‌ی جعبه‌ها باشد و
+$s^*$ جواب بهینه باشد بطوری‌که وزن آن $W(s^*)$ باشد.
+داریم :
+\begin{equation}
+    W(s^*) \ge max(b_i); b_i \in Boxes
+\end{equation}
+این موضوع واضح است چرا که بزرگترین حتی اگر بزرگترین جعبه را به تنهایی در یک
+کامیون بگذاریم، یک حد پایین برای جواب بهینه خواهد بود.
+
+از طرفی به سادگی می‌توانیم نتیجه بگیریم که:
+\begin{equation}
+    W(s_a) \le W(s^*) + max(b_i) ; bi \in Boxes
+\end{equation}
+چرا که اگر جز این بود یعنی یکی از کامیون‌ها حداقل دو جعبه بیشتر از دیگر کامیون‌ها داشت
+که با روند الگوریتم در تضاد بود چون حداقل یکی از جعبه‌ها را به کامیون دیگری می‌داد که از 
+$W(s^*)$ کمتر بود.
+و از (۱) نتیجه می‌گیریم که :
+\begin{equation}
+    W(s_a) \le W(s^*) + W(s^*) = 2 W(s^*)
+\end{equation}
+بنایراین ثابت شد که الگوریتم، یک الگوریتم ۲-تقریبی است.
+\end{document}

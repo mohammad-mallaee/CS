@@ -1,0 +1,97 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\settextfont{XB Niloofar}
+
+\begin{document}
+ابتدا تابع محاسبه ریشه را پیاده‌سازی می‌کنیم:
+\begin{latin}
+\begin{lstlisting}[language=Python]
+def bisection_root(fn, eps, period, max_iters=math.inf):
+    a, b = period
+    iterations = 0
+    while iterations <= max_iters:
+        iterations += 1
+        x = (a + b) / 2
+        if abs(x - a) <= eps:
+            return x
+        if (fn(x) * fn(a)) < 0:
+            b = x
+        else:
+            a = x
+\end{lstlisting}
+\end{latin}
+
+\begin{latin}
+\begin{lstlisting}[language=Python] 
+def false_position_root(fn, eps, period, max_iters=math.inf):
+    a, b = period
+    iterations = 0
+    while iterations <= max_iters:
+        iterations += 1
+        x = (a * fn(b) - b * fn(a)) / (fn(b) - fn(a))
+        if abs(fn(x)) <= eps:
+            return x
+        if fn(x) * fn(a) < 0:
+            b = x
+        else:
+            a = x
+    return x
+\end{lstlisting}
+\end{latin}
+هر دو تابع از روشی مشابه استفاده می‌کنند که در هر مرحله بازه را کوچکتر می‌کنند
+تا به دقت مورد نظر برسند.
+نحوه کار الگوریتم در کلاس توضیح داده شده است پس  به سراغ پیدا کردن جواب مسئله اصلی می‌رویم.
+برای این کار کافی است تنها تابع را تغییر دهیم و به توابع بالا بدهیم بدین‌صورت که :
+\begin{latin}
+\begin{lstlisting}[language=Python]
+def find_point_bisection(fn, y, eps, period):
+    return bisection_root(lambda x: fn(x) - y, eps, period)
+
+def find_point_false_p(fn, y, eps, period, max_iters=math.inf):
+    return false_position_root(lambda x: fn(x) - y, eps, period, max_iters)
+\end{lstlisting}
+\end{latin}
+
+حالا برنامه را با دقت $10^{-14}$ روی چند تابع پیوسته که در بازه مورد نظر صعودی باشند بررسی می‌کنیم:
+\begin{align}
+    x^2 + \ln(x) \\
+    e^{x + 2} + \sin(x) \\
+    x^3 + 2x^2 + 2x + 4 \\
+    x^3 - x - 1
+\end{align}
+خروجی برنامه بصورت زیر خواهد بود:
+\begin{latin}
+\begin{lstlisting}
+    0 -- y: 3 , period: (0.4, 4)
+    bisection: 1.5921429370580948
+    false position: 1.5921429370580926
+    answer : 1.5921429370581
+    
+    1 -- y: 2 , period: (-3, -0.5)
+    bisection: -0.9629509544247856
+    false position: -0.9629509544247973
+    answer : -0.9629509545352
+    
+    2 -- y: 7 , period: (-1, 3)
+    bisection: 0.7429592021663112
+    false position: 0.7429592021663136
+    answer : 0.7429592021663
+    
+    3 -- y: 1 , period: (-1, 2)
+    bisection: 1.5213797068045647
+    false position: 1.5213797068045662
+    answer : 1.5213797068046  
+\end{lstlisting}
+\end{latin}
+\end{document}
