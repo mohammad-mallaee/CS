@@ -1,6 +1,7 @@
 import socket
 from threading import Thread
 
+# A simple clinet for a chat application. Run this along with server.py
 
 def sending(csoc):
     while csoc:

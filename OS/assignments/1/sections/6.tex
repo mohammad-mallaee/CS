@@ -1,0 +1,44 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\usepackage{enumerate}
+\usepackage{xepersian}
+\settextfont{XB Niloofar}
+
+\begin{document}
+فرض کنید دو فرآیند 1p و 2p به صورت همروند وجود دارند. در این صورت کدام یک از موارد زیر نمی تواند خروجی اجرای این دو
+پردازه باشد؟ (پاسختان را شرح دهید)
+
+\begin{enumerate}[(A)]
+    \item $C^* A^* B^* D$ \\
+    از آنجایی که
+    D
+    تنها یکبار چاپ شده‌است و
+    C
+    به تعدادی بیشتری چاپ شده‌است درحالی که هر دو در یک حلقه بوده‌اند پس این گزینه اشتباه است.
+    \item $(AB)^*(CD)^*$ \\
+    این گزینه درست است زیرا حلقه اول اجرا شده و پس از آن حلقه دوم اجرا شده است.
+    \item $A(CD)^*B$ \\
+    در این گزینه ابتدا
+    A
+    چاپ شده است سپس حلقه برنامه دوم و پس از پایان آن، ادامه حلقه اول که
+    B
+    است چاپ شده است پس میتواند خروجی برنامه باشد
+    \item $BCDA$ \\
+    این گزینه نیز نمی‌تواند خروجی این برنامه باشد زیرا
+    B
+    قبل از
+    A
+    چاپ شده است درحالی که در حلقه برعکس است.
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,87 @@
+\documentclass[11pt]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{enumerate}
+\linespread{1.15}
+\usepackage{tabularray}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\settextfont{XB Niloofar}
+\parindent 0pt
+
+\begin{document}
+
+\include{info}
+
+\begin{center}
+
+    \includegraphics[scale=0.2]{./UILogo.png}
+
+    \University \\
+    \Department\\
+    
+    
+    \begin{large}
+    \vspace{0.5cm}
+    
+    \end{large}
+    
+    \vspace{1cm}
+    \begin{latin}
+        {\Large\textbf\EnglishCourseTitle}
+    \end{latin}
+    \begin{center}
+        \CourseName
+    \end{center}
+    
+    \vspace{1cm}
+    {\large{سری نخست تمرینات}}\\
+    \vspace{0.25cm}
+    {\large\textbf{\courseSemester}}
+
+    \vspace{1.25cm}
+
+    {اعضای گروه}\\
+    \begin{spacing}{1.5}
+        {{\GroupeMembers}}
+    \end{spacing}
+    
+    \vspace{1.25cm}
+    
+
+    \vspace{0.5cm}
+    {نام استاد درس}\\[0.5em]
+    {\large\textbf{\CourseProfessor}}
+    
+    \vspace{1.2cm}
+
+\end{center}
+\pagebreak
+
+\section*{تمرین ۱}
+\subfile{sections/1.tex}
+\pagebreak
+\section*{تمرین ۲}
+\subfile{sections/2.tex}
+\section*{تمرین ۳}
+\subfile{sections/3.tex}
+\section*{تمرین ۴}
+\subfile{sections/4.tex}
+\section*{تمرین ۵}
+\subfile{sections/5.tex}
+\vspace{1cm}
+\section*{تمرین ۶}
+\subfile{sections/6.tex}
+\pagebreak
+\section*{تمرین ۷}
+\subfile{sections/7.tex}
+
+\end{document}

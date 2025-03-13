@@ -1,0 +1,44 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{tabularray}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\usepackage{enumerate}
+\usepackage{spverbatim}
+\usepackage{xepersian}
+\settextfont{XB Niloofar}
+
+\begin{document}
+فرض کنید در کد زیر
+\lr{p1} و \lr{p2}
+همروند باشند و سمافورهای x و y دو سمافور دودویی و هر دو مقدار اولیه یک را داشته باشند. همچنین
+فرض کنید دستور print در یک چرخه دستورالعمل اجرا شود.
+\begin{latin}
+    \begin{center}
+        \begin{spverbatim}
+            p2:                         p1:
+                ----                        ----
+                wait(y)                     wait(x)
+                while true do               while true do
+                    print "B"                   print "A"
+                signal(y)                   signal(x)
+                ----                        ----
+        \end{spverbatim}
+    \end{center}
+\end{latin}
+
+آیا هر تلفیقی از A ها و B ها ممکن است در خروجی ظاهر شوند؟ توضیح دهید.
+
+با توجه به اینکه این دو فرآیند از سمافور‌های متفاوتی استفاده می‌کنند هیچ کدام منتظر دیگری نمی‌ماند.
+با فرض اینکه این دو فرآیند همروند اجرا شوند، بنابراین در هر قسمتی از اجرا ممکن است اجرای آن‌ها متوقف شود
+و CPU به فرآیند دیگر اختصاص داده شود که این بدان معناست که
+خروجی این برنامه‌ها از الگوی خاصی پیروی نمی‌کند و هر حالتی ممکن است داشته باشد.
+\end{document}
