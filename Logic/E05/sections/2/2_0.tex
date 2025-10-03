@@ -1,0 +1,29 @@
+\documentclass[]{exam}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\settextfont{XB Niloofar}
+\algrenewcommand{\algorithmicrequire}{\textbf{Input:}}
+\algrenewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\begin{document}
+فرض کنید $FV(A) = \lbrace x_1, \dots, x_n \rbrace$ و $\mathscr{I}$ تعبیری برای $A$ باشد. ثابت کنید:
+\begin{itemize}
+    \item برای تخصیص $\sigma$ : $\mathscr{I} \models \exists x_1 \dots \exists x_n A \longleftrightarrow \mathscr{I} \underset{\sigma}{\models} A$
+    \item برای هر تخصیص $\sigma$ : $\mathscr{I} \models \forall x_1 \dots \forall x_n A \longleftrightarrow \mathscr{I} \underset{\sigma}{\models} A$
+\end{itemize}
+\end{document}

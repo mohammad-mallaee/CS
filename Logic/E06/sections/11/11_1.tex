@@ -1,0 +1,80 @@
+\documentclass[]{exam}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 10in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+
+\usepackage[tableaux]{prooftrees}
+\renewcommand*\linenumberstyle[1]{(#1)}
+\newcommand*{\lif}{\ensuremath{\mathbin{\rightarrow}}}
+\settextfont{XB Niloofar}
+\begin{document}
+
+\forestset{%
+    vertical/.style={ %define style for phantom node
+            %with vertical edge drawn from it
+            before drawing tree={not ignore edge, edge=draw},
+        },
+}
+
+\begin{tableau}
+    {line no sep= 1.5cm,
+        just sep= 1.5cm,
+        for tree={s sep'=10mm},
+    }
+    [{\forall x \: (x \approx a \lor x \approx b \lor x \approx c)}, just={ریشه}
+    [{\neg (\exists A(x) \longleftrightarrow A(a) \lor A(b) \lor A(c))}, just={ریشه}
+        [{\neg \exists x \: A(x)}, just={2 F $\longleftrightarrow$}
+            [{A(a)}, just={2 F $\longleftrightarrow$}
+            [{\neg A(a)}, just={3 F $\exists$}, close={۴ و ۵}
+            ]
+            ]
+            [{A(b)}, just={}
+            [{\neg A(b)}, just={3 F $\exists$}, close={۴ و ۵}
+            ]
+            ]
+            [{A(c)}, just={}
+            [{\neg A(c)}, just={3 F $\exists$}, close={۴ و ۵}
+            ]
+            ]
+        ]
+        [{\exists x \: A(x)}, just={2 F $\longleftrightarrow$}
+        [{\neg A(a)}, just={2 F $\longleftrightarrow$}
+        [{\neg A(b)}, just={2 F $\longleftrightarrow$}
+        [{\neg A(c)}, just={2 F $\longleftrightarrow$}
+        [{A(a_1)}, just={3 T $\exists$}
+            [{a_1 \approx a}, just={1 T $\forall$}
+            [{A(a)}, just={$Id_2$ و ۷ و ۸}, close={۶ و ۱۱}
+            ]
+            ]
+            [{a_1 \approx b}, just={}
+            [{A(b)}, just={$Id_2$ و ۷ و ۸}, close={۷ و ۱۱}
+            ]
+            ]
+            [{a_1 \approx c}, just={}
+            [{A(c)}, just={$Id_2$ و ۷ و ۸}, close={۸ و ۱۱}
+            ]
+            ]
+        ]
+        ]
+        ]
+        ]
+        ]
+    ]
+    ]
+\end{tableau}
+
+\end{document}

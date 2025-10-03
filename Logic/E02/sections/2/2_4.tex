@@ -1,0 +1,80 @@
+\documentclass[]{exam}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{mathrsfs}
+\settextfont{XB Niloofar}
+\algrenewcommand{\algorithmicrequire}{\textbf{Input:}}
+\algrenewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+    داریم
+    $A \in U$
+    که
+    $\models A$
+    یعنی برای هر تعبیری
+    $v_\mathscr{I} (A) = \top$.
+    از طرفی فرمولی چون
+    $A_i$
+    که 
+    $i \in \{1, 2, \dots, n\}$
+    وجود دارد که در تعبیر
+    ارزش نادرست دارد.
+    چون
+    $A$
+    برای هر تعبیر 
+    $\mathscr{I}$
+    ارزش درست دارد، پس
+    $A$
+    معادل با
+    $A_i$
+    نیست.
+    در نتیجه اگر 
+    $U - A$
+    را به دست آوریم، هنوز هم فرمول 
+    $A_i$
+    وجود دارد که ارزش آن نادرست است و باعث میشود تا 
+    $U$
+    هنوز هم صدق ناپذیر باقی بماند.
+    
+
+
+\end{document}

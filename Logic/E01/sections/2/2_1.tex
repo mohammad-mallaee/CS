@@ -1,0 +1,76 @@
+\documentclass[]{exam}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{mathrsfs}
+\settextfont{XB Niloofar}
+\algrenewcommand{\algorithmicrequire}{\textbf{Input:}}
+\algrenewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+
+قوانین پرانتزگذاری به صورت زیرند:
+\begin{enumerate}
+    \item حذف پرانتزهای بیرونی فرمول
+    \item حذف پرانتزهای بیرونی فرمول شامل نقیض
+    \item قواعد چسبندگی: $\mathbf{\neg} > \mathbf{\land, \uparrow} > \mathbf{\lor, \downarrow} > \mathbf{\rightarrow} > \mathbf{\leftrightarrow, \oplus}$
+
+
+\vspace{1cm}
+\textbf{۱:}
+\begin{align*}
+    ((p \oplus q) \uparrow (\neg p)) \leftrightarrow (\neg (r \rightarrow (\neg p))) 
+    &\stackrel{(1)}{\equiv} (p \oplus q) \uparrow (\neg p) \leftrightarrow \neg (r \rightarrow (\neg p))\\
+    &\stackrel{(2)}{\equiv} (p \oplus q) \uparrow \neg p \leftrightarrow \neg (r \rightarrow \neg p)\\
+\end{align*}
+
+
+\textbf{۲:}
+\begin{align*}
+    (((\neg (\neg p)) \lor p) \land (\neg p))
+    &\stackrel{(1)}{\equiv} ((\neg (\neg p)) \lor p) \land (\neg p)\\
+    &\stackrel{(2)}{\equiv} (\neg \neg p \lor p) \land \neg p\\
+\end{align*}
+
+\end{enumerate}
+
+\end{document}
+

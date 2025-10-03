@@ -1,0 +1,122 @@
+\documentclass[]{exam}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{mathrsfs}
+\settextfont{XB Niloofar}
+\algrenewcommand{\algorithmicrequire}{\textbf{Input:}}
+\algrenewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+    پایه استقرا:
+    فرمول
+    $B$
+    گزاره اتمی است، پس
+    $A$
+    همان
+    $B$
+    است. در این صورت
+    $B'$
+    همان
+    $A'$
+    است. از آنجایی که
+    $A \equiv A'$
+    پس
+    $B \equiv B'$.
+    \\
+    گام استقرا:
+    فرض کنید
+    $B = \neg C$.
+    از اینکه
+    $A \in sub(B)$
+    نتیجه میشود یا
+    $A$
+    همان
+    $B$
+    است و یا
+    $A \in sub(C)$.
+    در حالت اول 
+    $B'$
+    همان
+    $A'$
+    است و در نتیجه به وضوح
+    $B \equiv B'$.
+    در حالت دوم بنا بر فرض استقرا
+    $C' \equiv C \{A \leftarrow A'\}$
+    پس بنابر تمرین ۱ که در بالا حل شد:
+    $$\neg C' \equiv \neg C \{A \leftarrow A'\}$$
+    در نتیجه 
+    $B' \equiv B \{A \leftarrow A'\}$
+    
+    \vspace*{0.5cm}
+    فرض کنید
+    $B \equiv C * D$.
+    مسئله به سه دسته تقسیم میشود:
+    \begin{itemize}
+        \item $A \in sub(C)$ \\
+        دیدیم که 
+        $C' \equiv C \{A \leftarrow A'\}$
+        و میدانیم
+        $D \equiv D$
+        پس بنابر تمرین ۲ که اثبات شد، داریم:
+        $C' * D \equiv C * D$
+        پس 
+        $B' \equiv B$
+
+        \item $A \in sub(D)$\\
+        دیدیم که 
+        $D' \equiv D \{A \leftarrow A'\}$
+        و میدانیم
+        $C \equiv C$
+        پس بنابر تمرین ۲ که اثبات شد، داریم:
+        $C * D' \equiv C * D$
+        پس 
+        $B' \equiv B$
+
+        \item $A \equiv C * D$ \\
+        در این حالت
+        $B'$
+        همان 
+        $A'$
+        است و در نتیجه اثبات میشود
+        $B \equiv B'$.
+    \end{itemize}
+\end{document}

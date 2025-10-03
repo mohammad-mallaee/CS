@@ -1,0 +1,56 @@
+\documentclass[]{exam}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 10in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+
+\usepackage[tableaux]{prooftrees}
+\renewcommand*\linenumberstyle[1]{(#1)}
+\newcommand*{\lif}{\ensuremath{\mathbin{\rightarrow}}}
+\settextfont{XB Niloofar}
+\begin{document}
+
+\forestset{%
+    vertical/.style={ %define style for phantom node
+            %with vertical edge drawn from it
+            before drawing tree={not ignore edge, edge=draw},
+        },
+}
+
+\begin{tableau}
+    {line no sep= 1.5cm,
+        just sep= 1.5cm,
+        for tree={s sep'=10mm},
+    }
+    [{\forall x \: (A(x) \lif B(x))}, just={ریشه}
+    [{\neg (\exists x \: A(x) \lif \exists x B(x))}, just={ریشه}
+    [{\exists x \: A(x)}, just={2 F $\lif$}
+    [{\neg \exists x B(x)}, just={2 F $\lif$}
+    [{A(a_1)}, just={3 T $\exists$ و جدید $a_1 \in C$}
+    [{\neg B(a_1)}, just={4 F $\exists$ و $a_1 \in C$}
+    [{A(a_1) \lif B(a_1)}, just={1 T $\forall$ و $a_1 \in C$}
+        [{\neg A(a_1)}, just={}, close={۵ و ۸}]
+        [{B(a_1)}, just={}, close={۶ و ۸}]
+    ]
+    ]
+    ]
+    ]
+    ]
+    ]
+    ]
+\end{tableau}
+
+\end{document}

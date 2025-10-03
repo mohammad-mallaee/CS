@@ -1,0 +1,77 @@
+\documentclass[]{exam}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{mathrsfs}
+\settextfont{XB Niloofar}
+\algrenewcommand{\algorithmicrequire}{\textbf{Input:}}
+\algrenewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+
+میدانیم که
+$A \equiv B$
+نمادی است در فرازبان و معادل با این است که عبارت زیر به ازای هر تعبیری همچون 
+$\mathscr{I}$
+برقرار باشد:
+
+$$
+v_\mathscr{I} (A) = v_\mathscr{I} (B)
+$$
+
+از طرفی میدانیم که به ازای هر تعبیر داریم:
+\begin{align*}
+    v_\mathscr{I} (\neg A) = 1 - v_\mathscr{I} (A)
+    \\
+    v_\mathscr{I} (\neg B) = 1 - v_\mathscr{I} (B)
+\end{align*}
+
+
+و چون طبق فرض داریم
+$v_\mathscr{I} (A) = v_\mathscr{I} (B)$
+پس دو عبارت فوق برابرند و 
+$v_\mathscr{I} (\neg A) = v_\mathscr{I} (\neg B)$
+یا
+\begin{align*}
+    \neg A = \neg B
+\end{align*}
+
+\end{document}

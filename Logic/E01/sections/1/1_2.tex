@@ -1,0 +1,123 @@
+\documentclass[]{exam}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{mathrsfs}
+\settextfont{XB Niloofar}
+\algrenewcommand{\algorithmicrequire}{\textbf{Input:}}
+\algrenewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+
+همانند تمرین قبل، نشان می‌‌دهیم که همه‌ی گزاره‌های اتمی دارای خاصیت فوق هستند. 
+در واقع در هر گزاره‌ی اتمی‌ای مثل 
+$p \in \mathscr{P}$
+خود
+$p$
+یک اتم است. پس حداقل یک اتم در گزاره‌های اتمی وجود دارد و حکم اول ثابت است.
+
+حال اثبات می‌کنیم که اگر در فرمولی چون
+$A \in \mathscr{F}$
+حداقل یک اتم رخ داده‌است، در
+$\neg A$
+نیز همین‌گونه است.
+چگونه ثابت می‌کنیم؟ متاسفانه در زمان طرح سوال هنوز با مفهوم
+$Sub(A)$
+آشنا نشده بودیم، ولیکن ابزاری است بس کارا در جهت اثبات گزاره‌ی فوق. امیدواریم تقلب محسوب نشود :)
+\\
+فرض کنیم حداقل یک اتم در 
+$A$
+وجود دارد. یعنی
+$p \in Sub(A)$.
+از طرفی داریم:
+$$Sub(\neg A) = Sub(A) \cup \{\neg A\}$$
+چون 
+$p \in Sub(A)$
+پس
+$p$
+در اجتماع 
+$Sub(A)$
+با مجموعه‌ای دیگر نیز حضور دارد، یعنی 
+$p \in Sub(\neg A)$.
+در نتیجه در نقیض
+$A$
+نیز حداقل یک اتم وجود دارد.
+
+صورت گزاره‌ی آخری که اثباتش حسن ختامی است بر اثبات ما، به شرح زیر است:
+\\
+اگر
+$A$
+و
+$B$
+دو فرمول باشند که در هر کدام حداقل یک اتم وجود داشته باشد،
+آنگاه در فرمول
+$A * B$، 
+$* \in \{\land, \lor, \uparrow, \downarrow, \oplus\, \rightarrow, \leftrightarrow \}$
+نیز حداقل یک اتم وجود دارد.
+\\
+خب، دست به کار شویم.
+می‌دانیم که حداقل یک اتم مانند
+$p \in \mathscr{P}$
+وجود دارد به قسمی که 
+$p \in Sub(A)$
+و همچنین اتمی مانند
+$q \in \mathscr{P}$
+وجود دارد به صورتی که
+$q \in Sub(B)$.
+البته در بدترین شرایط
+$p = q$
+است و در هر دو فرمول، حداقل یک اتم مانند
+$p$
+وجود دارد.
+با توجه به فرضیات و اینکه
+$
+\mathbf{
+Sub(A * B) = Sub(A) \cup Sub(B) \cup \{A * B\}
+}
+$
+داریم
+$p \in Sub(A * B)$
+چرا که اتم
+$p$
+در حداقل یکی از زیرفرمول ها حضور دارد،
+پس در نتیجه در اجتماع آن زیرفرمول با دیگر مجموعه ها نیز حضور خواهد داشت.
+پس گزاره سوم اثبات شده و حکم کلی ثابت است.
+\end{document}

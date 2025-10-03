@@ -1,0 +1,113 @@
+\documentclass[]{exam}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 10in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+
+\usepackage[tableaux]{prooftrees}
+\renewcommand*\linenumberstyle[1]{(#1)}
+\newcommand*{\lif}{\ensuremath{\mathbin{\rightarrow}}}
+\settextfont{XB Niloofar}
+\begin{document}
+
+برای اثبات این  قسمت، از مدل نقض استفاده می‌کنیم. به همین منظور ابتدا با روش تابلو اطلاعاتی به دست آورده و سپس
+از آنها در ساخت مدل نقض بهره می‌جوییم.
+
+\forestset{%
+    vertical/.style={ %define style for phantom node
+            %with vertical edge drawn from it
+            before drawing tree={not ignore edge, edge=draw},
+        },
+}
+\begin{tableau}
+    {line no sep= 1.5cm,
+        just sep= 1.5cm,
+        for tree={s sep'=10mm},
+    }
+    [{\forall x \: (p(x) \lor q(x))}, just={ریشه}
+    [{\neg (\forall x \: p(x) \lor q(x))}, just={ریشه}
+    [{\neg p(a_1)}, just={2 F $\forall$ و جدید $a_1 \in C$}
+    [{\neg q(a_2)}, just={2 F $\forall$ و جدید $a_2 \in C$}
+    [{p(a_1) \lor p(a_1)}, just={1 T $\forall$ $a_1 \in C$}
+        [{p(a_1)}, just={}, close={۳ و ۶}
+        ]
+        [{q(a_1)}, just={}
+        [{p(a_2) \lor q(a_2)}, just={1 T $\forall$ و $a_2 \in C$}
+            [{p(a_2)}, just={},
+            ]
+            [{q(a_2)}, just={}, close={۴ و ۸}
+            ]
+        ]
+        ]
+    ]
+    ]
+    ]
+    ]
+    ]
+\end{tableau}
+
+به نظر می‌رسد که تابلو تا همین مرحله اطلاعات خوبی را در اختیار ما قرار داده باشد. حال به تشکیل مدل نقض برای تنها شاخه‌ی باز تابلو می‌پردازیم.
+\begin{align*}
+    \mathscr{I} &= (D, \{p^\mathscr{I}, q^\mathscr{I}\})\\
+    D &= \{\alpha_1, \alpha_2\}\\
+    p^\mathscr{I} &= \{\alpha_2\}\\
+    q^\mathscr{I} &= \{\alpha_1\}
+\end{align*}
+
+حال باید ثابت کنیم هنگامی که مقدم صادق است
+($\mathscr{I} \models \forall x \: (p(x) \lor q(x))$)
+تالی کاذب است
+($\mathscr{I} \not \models \forall x \: p(x) \lor \forall x \: q(x)$).
+ابتدا با استفاده از صدق تارسکی بررسی می‌کنیم 
+$\mathscr{I} \overset{?}{\models} \forall x \: (p(x) \lor q(x))$.
+صدق تارسکی بیان می‌کند که برای درست بودن این عبارت، لازم است تا نشان دهیم برای تک تک اعضای دامنه صادق است.
+\\
+میدانیم که 
+$\alpha_1 \in q^{\mathscr{I}}$
+پس
+$\mathscr{I} \underset{\sigma [x \leftarrow \alpha_1]}{\models} p(x) \lor q(x)$.
+\\
+میدانیم که 
+$\alpha_2 \in p^{\mathscr{I}}$
+پس
+$\mathscr{I} \underset{\sigma [x \leftarrow \alpha_2]}{\models} p(x) \lor q(x)$.
+\\
+در نتیجه برای هر 
+$\alpha_i \in D$
+داریم
+$\mathscr{I} \underset{\sigma [x \leftarrow \alpha_i]}{\models} p(x) \lor q(x)$.
+پس بنابر صدق تارسکی 
+$\mathscr{I} \underset{\sigma}{\models} \forall x \: (p(x) \lor q(x))$.
+
+حال باید ثابت کنیم
+$\mathscr{I} \not \models \forall x \: p(x) \lor \forall x \: q(x)$
+\\
+میدانیم
+$\alpha_1 \notin p^\mathscr{I}$
+پس 
+$\mathscr{I} \underset{\sigma [x \leftarrow \alpha_1]}{\not \models} p(x)$.
+\\
+میدانیم
+$\alpha_2 \notin q^\mathscr{I}$
+پس
+$\mathscr{I} \underset{\sigma [x \leftarrow \alpha_2]}{\not \models} q(x)$.
+\\
+پس نتیجه می‌گیریم که عطف بالا صادق نیست و 
+$\mathscr{I} \not \models \forall x \: p(x) \lor \forall x \: q(x)$
+در نتیجه:
+$$\forall x \: ( p(x) \lor q(x) ) \not \models \forall x \: p(x) \lor \forall x  \: q(x)$$
+
+\end{document}

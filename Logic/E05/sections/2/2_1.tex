@@ -1,0 +1,124 @@
+\documentclass[]{exam}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{mathrsfs}
+\settextfont{XB Niloofar}
+\algrenewcommand{\algorithmicrequire}{\textbf{Input:}}
+\algrenewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+از سمت چپ این هم ارزی شروع می‌کنیم و نشان می‌دهیم اگر سمت چپ درست باشد، سمت راست این هم‌ارزی نیز درست خواهد بود.
+طبق صدق تارسکی داریم:
+\begin{align}
+    \mathscr{I} \underset{\sigma}{\models} \exists x_1 \dots \exists x_n A \Longleftrightarrow
+    \mathscr{I} \underset{\sigma_1}{\models} \exists x_2 \dots \exists x_n A \; for \; some \; d_1, \sigma_1 := \sigma[x_1 \leftarrow d_1] \\
+    \mathscr{I} \underset{\sigma_1}{\models} \exists x_2 \dots \exists x_n A \Longleftrightarrow
+    \mathscr{I} \underset{\sigma_1}{\models} \exists x_3 \dots \exists x_n A \; for \; some \; d_2, \sigma_2 := \sigma_1[x_2 \leftarrow d_2]
+\end{align}
+با ادامه این روند می‌توانیم $\sigma'$ را به صورت $\sigma'(x_i) = d_i$ تعریف کنیم
+و چون چنین $d_i$ هایی وجود دارند می‌توانیم بگوییم:
+\begin{align}
+    \mathscr{I} \models \exists x_1 \dots \exists x_n A \longleftrightarrow \mathscr{I} \underset{\sigma'}{\models} A
+\end{align}
+حالا با برعکس کردن این روند می‌توانیم طرف دیگر این هم‌ارزی را اثبات کنیم:
+\begin{align}
+    \mathscr{I} \underset{\sigma}{\models} A, d_n = \sigma(x_n) \longleftrightarrow
+    \mathscr{I} \underset{\sigma_n}{\models} A \; for \; d_n, \sigma_n := \sigma[x_n \leftarrow d_n] \longleftrightarrow
+    \mathscr{I} \underset{\sigma_n}{\models} \exists x_n A
+\end{align}
+با ادامه این روند نیز می‌تواینم نشان دهیم:
+\begin{align}
+    \mathscr{I} \underset{\sigma}{\models} A \longleftrightarrow \mathscr{I} \models \exists x_1 \dots \exists x_n A
+\end{align}
+
+برای قسمت دوم تمرین نیز داریم:
+\begin{align}
+    \mathscr{I} \models \forall x_1 \dots \forall x_n A \longleftrightarrow \mathscr{I} \underset{\sigma}{\models} A
+\end{align}
+
+با توجه به صدق تارسکی برای هر تخصیصی چون 
+$\sigma_1$
+داریم:
+\begin{align}
+    \mathscr{I} \models \forall x_1 \dots \forall x_n A \longleftrightarrow
+    \mathscr{I} \underset{\sigma_1}{\models} \forall x_2 \dots \forall x_n A, \; \sigma_1 := \sigma[x_1 \leftarrow d] \; for \; all \; d \in D
+\end{align}
+پس عضوی از 
+$D$
+ مانند 
+$d_1$
+را
+به دلخواه انتخاب می‌کنیم 
+و داریم:
+\begin{align}
+    d_1 \in D: \mathscr{I} \underset{\sigma_1}{\models} \forall x_2 \dots \forall x_n A
+\end{align}
+در مرحله بعدی خواهیم داشت:
+\begin{align}
+    d_1, d_2 \in D: \mathscr{I} \underset{\sigma_2}{\models} \forall x_3 \dots \forall x_n A
+\end{align}
+این عملیات را تا آخر ادامه می‌دهیم تا به
+$\mathscr{I} \underset{\sigma}{\models} A$
+برسیم. یعنی:
+\begin{align}
+    d_1, \dots, d_n \in D: \mathscr{I} \underset{\sigma_n}{\models} A
+\end{align}
+چون 
+$d_1, \dots, d_n$
+را به دلخواه انتخاب کردیم، این حکم برای هر 
+$\sigma$
+ای برقرار است.
+
+برای حل قسمت بازگشت این هم‌ارزی نیز، با توجه به اینکه تعبیر فوق برای هر تخصیصی برقرار است،
+در هر مرحله می‌توانیم به دلخواه یک عضو مانند
+$d_i \in D$
+انتخاب کنیم.
+همچون قسمت قبل می‌توانیم این تخصیص را با صور عمومی نمایش دهیم. این کار را برای تمام متغیرهای موجود در 
+فرمول 
+$A$
+انجام می‌دهیم تا سرانجام همچون قسمت قبل به 
+\begin{align}
+    \mathscr{I} \models \forall x_1 \dots \forall x_n A 
+\end{align}
+دست یابیم.
+
+\end{document}

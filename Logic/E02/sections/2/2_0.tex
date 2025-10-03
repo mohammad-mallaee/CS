@@ -1,0 +1,88 @@
+\documentclass[]{exam}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{mathrsfs}
+\settextfont{XB Niloofar}
+\algrenewcommand{\algorithmicrequire}{\textbf{Input:}}
+\algrenewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+
+
+اگر 
+$U \subseteq \mathscr{F}$
+اثبات کنید:
+\begin{enumerate}
+    \item اگر
+    $U$
+    صدق پذیر باشد و 
+    $A \in U$
+    آنگاه
+    $U - \{A\}$
+    نیز صدق پذیر است.
+
+    \item اگر
+    $U$
+    صدق پذیر باشد و
+    $B$
+    معتبر باشد آنگاه
+    $U \cup \{B\}$
+    نیز صدق پذیر است.
+
+    \item اگر
+    $U$
+    صدق ناپذیر باشد آنگاه برای هر فرمول
+    $B$
+    مجموعه
+    $U \cup {B}$
+    نیز صدق ناپذیر است.
+
+    \item اگر
+    $U$
+    ناپذیر باشد و فرمول
+    $A \in U$
+    معتبر باشد
+    آنگاه 
+    $U - \{A\}$
+    نیز صدق ناپذیر است.
+\end{enumerate}
+\end{document}

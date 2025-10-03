@@ -1,0 +1,68 @@
+\documentclass[]{exam}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 10in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+
+\usepackage[tableaux]{prooftrees}
+\renewcommand*\linenumberstyle[1]{(#1)}
+\newcommand*{\lif}{\ensuremath{\mathbin{\rightarrow}}}
+\settextfont{XB Niloofar}
+\begin{document}
+
+\forestset{%
+    vertical/.style={ %define style for phantom node
+            %with vertical edge drawn from it
+            before drawing tree={not ignore edge, edge=draw},
+        },
+}
+
+\begin{tableau}
+    {line no sep= 1.5cm,
+        just sep= 1.5cm,
+        for tree={s sep'=10mm},
+    }
+    [{\forall x \forall y \: (f(x) \approx f(y) \lif x \approx y)}, just={ریشه}
+    [{\forall x \forall y \: (g(x) \approx g(y) \lif x \approx y)}, just={ریشه}
+    [{\neg \forall x \forall y \: f(g(x)) \approx f(g(y) \lif x \approx y)}, just={ریشه}
+    [{\neg \forall y (f(g(a_1)) \approx f(g(y)) \lif a_1 \approx y)}, just={3 F $\forall$ و جدید $a_1 \in C$}
+    [{\neg (f(g(a_1)) \approx f(g(a_2)) \lif a_1 \approx a_2)}, just={4 F $\forall$ و جدید $a_2 \in C$}
+    [{f(g(a_1)) \approx f(g(a_2))}, just={5 F $\lif$}
+    [{\neg (a_1 \approx a_2)}, just={5 F $\lif$}
+    [{\forall (g(a_1) \approx g(y) \lif a_1 \approx y)}, just= {10 T $\forall$}
+    [{g(a_1) \approx g(a_2) \lif a_1 \approx a_2}, just= {8 T $\forall$}
+    [{\forall y \: (f(g(a_1)) \approx f(y) \lif g(a_1) \approx y)}, just={1 T $\forall$ و $g(a_1) \in C$}
+    [{f(g(a_1)) \approx f(g(a_2)) \lif g(a_1) \approx g(a_2)}, just= {10 T $\forall$ و $g(a_2) \in C$}
+        [{\neg (f(g(a_1)) \approx f(g(a_2)))}, just= {11 T $\lif$}, close={۱۲ و ۶} ] 
+        [{g(a_1) \approx g(a_2)}, just= {9 T $\lif$}
+            [{\neg (g(a_1) \approx g(a_2))}, just={9 T $\forall$}, close={۱۲ و ۱۳}]
+            [{a_1 \approx a_2}, just={9 T $\forall$}, close={۷ و ۱۳}
+            ]
+        ]
+    ]
+    ]
+    ]
+    ]
+    ]
+    ]
+    ]
+    ]
+    ]
+    ]
+    ]
+\end{tableau}
+
+\end{document}

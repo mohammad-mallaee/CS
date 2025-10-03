@@ -1,0 +1,99 @@
+\documentclass[]{exam}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{mathrsfs}
+\settextfont{XB Niloofar}
+\algrenewcommand{\algorithmicrequire}{\textbf{Input:}}
+\algrenewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+ابتدا پایه‌های استقرا را در نظر می‌گیریم:
+\begin{itemize}
+    \item فرض کنید $A$ یک فرمول اتمی بسته باشد و $A'$ تنها متغیر آزادش $x$ باشد به طوری که
+    $A = \forall x \: A'(x)$.
+    طبق تعریف صدق تارسکی :
+    \begin{align}
+        \mathscr{I} \underset{\sigma_1}{\models} \forall x \: A'(x) \Longleftrightarrow
+        \mathscr{I} \underset{\sigma'_1}{\models} A' \; for \; all \; d \in D \;, \sigma'_1 := \sigma_1[x \leftarrow d] \\
+        \mathscr{I} \underset{\sigma_2}{\models} \forall x \: A'(x) \Longleftrightarrow
+        \mathscr{I} \underset{\sigma'_2}{\models} A' \; for \; all \; d \in D \;, \sigma'_2 := \sigma_2[x \leftarrow d]
+    \end{align}
+    از آنجایی که $x$ تنها متغیر آزاد $A'$ است و توسط $\sigma'$ با $d$ جایگزین می‌شود،
+    مقدار این دو تابع در $x$ یکسان است
+    و از آنجا که میدانستیم $\sigma_1$ و $\sigma_2$ تنها در $x$ می‌توانند تفاوت داشته باشند
+    و چون طبق $(1)$ و $(2)$ نشان دادیم در $x$ نیز مقدارشان یکسان است
+    ، نتیجه می‌گیریم $\sigma_1 = \sigma_2$ و :
+    $$\mathscr{I} \underset{\sigma_1}{\models} A \longleftrightarrow \mathscr{I} \underset{\sigma_2}{\models} A$$
+    \item اگر $A = \exists x A'(x)$ باشد، همانند قسمت قیل می‌توانیم درستی حکم را نشان دهیم.
+\end{itemize}
+حالا طبق استقرای ساختاری فرض می‌کنیم حکم برای $A$ و $B$
+برقرار باشد نشان می‌دهیم برای $\neg A$ و $A * B$ نیز برقرار است:
+\begin{align}
+    \mathscr{I} \underset{\sigma_1}{\models} \neg A \leftrightarrow 
+    \mathscr{I} \not \underset{\sigma_1}{\models} A \leftrightarrow 
+    \mathscr{I} \not \underset{\sigma_2}{\models} A \leftrightarrow 
+    \mathscr{I} \underset{\sigma_2}{\models} \neg A \\
+    \mathscr{I} \underset{\sigma_1}{\models} A * B \leftrightarrow
+    \mathscr{I} \underset{\sigma_1}{\models} A * \mathscr{I} \underset{\sigma_1}{\models}  B \leftrightarrow
+    \mathscr{I} \underset{\sigma_2}{\models} A * \mathscr{I} \underset{\sigma_2}{\models}  B \leftrightarrow
+    \mathscr{I} \underset{\sigma_2}{\models} A * B
+\end{align}
+حالا کافیست با استفاده از استقرا روی تعداد سورها حکم را ثابت کنیم تا اثبات به پایان برسد:
+
+فرض می کنیم $A$ یک فرمول بسته باشد و $\lbrace x_1, \dots x_n \rbrace$
+متغیرهای آزاد $A'$ باشند به طوری که : $A = \forall x_n \dots \forall x_1 A'(x_1, \dots, x_n)$
+با فرض اینکه حکم برای $n-1$ سور برقرار است اثبات را انجام می‌دهیم:
+\begin{align}
+    \mathscr{I} \underset{\sigma_1}{\models} \forall x_n \dots \forall x_1 A' \Longleftrightarrow \mathscr{I} \underset{\sigma'_1}{\models} 
+    \forall x_{n-1} \dots \forall x_1 A' \; for \; all \; d \in D \;, \sigma'_1 := \sigma_1[x_n \leftarrow d] \\
+    \mathscr{I} \underset{\sigma_2}{\models} \forall x_n \dots \forall x_1 A' \Longleftrightarrow \mathscr{I} \underset{\sigma'_2}{\models} 
+    \forall x_{n-1} \dots \forall x_1 A' \; for \; all \; d \in D \;, \sigma'_2 := \sigma_2[x_n \leftarrow d]
+\end{align}
+این قسمت نیز به طور مشابه اثبات می‌شود چرا که اگر $\forall x_{n-1} \dots \forall x_1 A'$ را $A''$ بنامیم، داریم:
+\begin{align}
+    \mathscr{I} \underset{\sigma_1}{\models} \forall x_n A'' \Longleftrightarrow \mathscr{I} \underset{\sigma'_1}{\models} 
+    A'' \; for \; all \; d \in D \;, \sigma'_1 := \sigma_1[x_n \leftarrow d] \\
+    \mathscr{I} \underset{\sigma_2}{\models} \forall x_n A'' \Longleftrightarrow \mathscr{I} \underset{\sigma'_2}{\models} 
+    A'' \; for \; all \; d \in D \;, \sigma'_2 := \sigma_2[x_n \leftarrow d]
+\end{align}
+این بخش قبلا اثبات شده است بنابراین اثبات کامل و حکم همیشه برقرار است.
+\end{document}

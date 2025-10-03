@@ -1,0 +1,64 @@
+\documentclass[]{exam}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 10in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+
+\usepackage[tableaux]{prooftrees}
+\renewcommand*\linenumberstyle[1]{(#1)}
+\newcommand*{\lif}{\ensuremath{\mathbin{\rightarrow}}}
+\settextfont{XB Niloofar}
+\begin{document}
+
+\forestset{%
+    vertical/.style={ %define style for phantom node
+            %with vertical edge drawn from it
+            before drawing tree={not ignore edge, edge=draw},
+        },
+}
+
+\begin{tableau}
+    {line no sep= 1.5cm,
+        just sep= 1.5cm,
+        for tree={s sep'=10mm},
+    }
+    [{\forall y \exists x \: (f(x) \approx y)}, just={ریشه}
+    [{\forall y \exists x \: (g(x) \approx y)}, just={ریشه}
+    [{\neg \forall y \exists x \: (f(g(x)) \approx y)}, just={ریشه}
+    [{\neg \exists x \: (f(g(x)) \approx a_1)}, just={3 F $\forall$ و جدید $a_1 \in C$}
+    [{\exists x \: f(x) \approx a_1}, just={1 T $\forall$}
+    [{f(a_3) = a_1}, just={5 T $\exists$ و $a_3 \in C$}
+    [{\exists x \: g(x) \approx a_3}, just={2 T $\forall$}
+    [{g(a_4) \approx a_3}, just={7 T $\exists$ و $a_4 \in C$}
+    [{\neg f(g(a_4)) \approx a_1}, just={4 F $\exists$}
+    [{\neg f(a_3) \approx a_1}, just={$Id_2$ و ۸ و ۹},
+    [{\neg a_1 \approx a_1}, just={$Id_2$ و ۶ و ۱۰}
+    [{a_1 \approx a_1}, just={$Id_1$}, close={۱۱ و ۱۲}
+    ]
+    ]
+    ]
+    ]
+    ]
+    ]
+    ]
+    ]
+    ]
+    ]
+    ]
+    ]
+\end{tableau}
+
+\end{document}

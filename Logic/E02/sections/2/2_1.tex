@@ -1,0 +1,93 @@
+\documentclass[]{exam}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{mathrsfs}
+\settextfont{XB Niloofar}
+\algrenewcommand{\algorithmicrequire}{\textbf{Input:}}
+\algrenewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+    داریم:
+    \begin{align*}
+        U &= \{A_1, A_2, \cdots, A_n\}\\
+        v_\mathscr{I} (A_i) &= \top,  i \in \{1, 2, \cdots, n\}
+    \end{align*}
+    % حال یکی از اعضای مجموعه
+    % $U$
+    % همچون
+    % $A_j$
+    % را انتخاب میکنیم. 
+    % داریم:
+    % $$U = \{A_1, A_2, \cdots, A_{j-1}, A_{j+1}, \cdots, A_n\} \cup \{A_j\}$$
+
+    از آنجا که مجموعه
+    $U$
+    صدق پذیر است پس تعبیری همچون
+    $\mathscr{I}$
+    وجود دارد که تمامی اعضای
+    $U$
+    بر اساس آن تعبیر ارزشی معادل با 
+    $\top$
+    دارند. 
+
+    چون ارزش تمام فرمول های موجود در
+    $U$
+    درست است، اگر یکی از اعضای این مجموعه را حذف کنیم، مابقی اعضا همچنان ارزشی برابر با
+    $\top$
+    خواهند داشت. 
+    فرض کنیم یکی از اعضای مجموعه
+    $U$
+    مانند
+    $A_j$
+    را انتخاب و از مجموعه حذف کنیم:
+    $$U - {A_j} = \{A_1, A_2, \cdots, A_{j-1}, A_{j+1}, \cdots, A_n\}$$
+
+    ارزش تمام
+    $A_i$
+    های باقی مانده در تعبیر مشخص
+    $\mathscr{I}$
+    ها درست است پس 
+    $U - \{A_j\}$
+    نیز صدق پذیر خواهد بود.
+
+\end{document}
+

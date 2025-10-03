@@ -1,0 +1,112 @@
+\documentclass[]{exam}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 10in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+
+\usepackage[tableaux]{prooftrees}
+\renewcommand*\linenumberstyle[1]{(#1)}
+\newcommand*{\lif}{\ensuremath{\mathbin{\rightarrow}}}
+\settextfont{XB Niloofar}
+\begin{document}
+مانند قسمت قبل تابلو را تا حد قابل قبولی جلو می‌بریم:
+
+\forestset{%
+    vertical/.style={ %define style for phantom node
+            %with vertical edge drawn from it
+            before drawing tree={not ignore edge, edge=draw},
+        },
+}
+\begin{tableau}
+    {line no sep= 1.5cm,
+        just sep= 1.5cm,
+        for tree={s sep'=10mm},
+    }
+    [{\exists x \: p(x)}, just={ریشه}
+    [{\exists x \: q(x)}, just={ریشه}
+    [{\neg \exists x \: (p(x) \land q(x))}, just={ریشه}
+    [{p(a_1)}, just={1 T $\exists$ و جدید $a_1 \in C$}
+    [{q(a_2)}, just={2 T $\exists$ و جدید $a_2 \in C$}
+    [{\neg (p(a_1) \land \neg q(a_1))}, just={3 F $\exists$ و $a_1 \in C$}
+    [{\neg p(a_1) \lor q(a_1)}, just={۶}
+        [{\neg p(a_1)}, just={}, close={۸ و ۴}
+        ]
+        [{\neg q(a_1)}, just={}
+        [{\neg (p(a_2) \land q(a_2))}, just={3 F $\exists$ و $a_2 \in C$}
+        [{\neg p(a_2) \lor \neg q(a_2)}, just={9}
+            [{\neg p(a_2)}, just={}
+            ]
+            [{\neg q(a_2)}, just={10}, close={۵ و ۱۱}
+            ]
+        ]
+        ]
+        ]
+    ]
+    ]
+    ]
+    ]
+    ]
+    ]
+    ]
+\end{tableau}
+
+به نظر می‌رسد که تابلو تا همین مرحله اطلاعات خوبی را در اختیار ما قرار داده باشد. حال به تشکیل مدل نقض برای تنها شاخه‌ی باز تابلو می‌پردازیم.
+\begin{align*}
+    \mathscr{I} &= (D, \{p^\mathscr{I}, q^\mathscr{I}\})\\
+    D &= \{\alpha_1, \alpha_2\}\\
+    p^\mathscr{I} &= \{\alpha_1\}\\
+    q^\mathscr{I} &= \{\alpha_2\}
+\end{align*}
+
+اکنون ثابت می‌کنیم اگر مقدم صادق باشد
+($\mathscr{I} \models \exists x \: p(x) \land \exists x \: q(x)$)
+تالی کاذب خواهد بود
+($\mathscr{I} \not \models \exists x \: (p(x) \land q(x))$).
+
+ابتدا با استفاده از صدق تارسکی نتیجه می‌گیریم 
+$\mathscr{I} \models \exists x \: p(x) \land \exists x \: q(x)$.
+صدق تارسکی بیان می‌دارد که برای اثبات درستی این عبارت، باید حداقل یک عضو از
+دامنه وجود داشته باشد که عبارت مذکور در آن صدق کند.
+\\
+می‌دانیم
+$\alpha_1 \in p^\mathscr{I}$
+پس 
+$\mathscr{I} \underset{\sigma [x \leftarrow \alpha_1]}{\models} p(x)$
+\\
+می‌دانیم
+$\alpha_2 \in q^\mathscr{I}$
+پس
+$\mathscr{I} \underset{\sigma [x \leftarrow \alpha_2]}{\models} q(x)$
+\\
+در نتیجه داریم
+$\mathscr{I} \underset{\sigma [x \leftarrow \alpha_i]}{\models} p(x) \land q(x)$
+
+حال باید تحقیق کنیم
+$\mathscr{I} \not \models \exists x \: (p(x) \land q(x))$
+\\
+می‌دانیم
+$\alpha_1 \notin p^\mathscr{I}$
+پس 
+$\mathscr{I} \underset{\sigma [x \leftarrow \alpha_1]}{\not \models} (p(x) \land q(x))$
+\\
+می‌دانیم
+$\alpha_2 \notin q^\mathscr{I}$
+پس 
+$\mathscr{I} \underset{\sigma [x \leftarrow \alpha_2]}{\not \models} (p(x) \land q(x))$
+
+در نتیجه هیچ عضوی از دامنه وجود ندارد که برای آن تالی صادق باشد. پس به یک مدل نقض رسیدیم و داریم:
+$$\exists x \: p(x) \land \exists x \: q(x) \not \models \exists x \: (p(x) \land q(x))$$
+\end{document}

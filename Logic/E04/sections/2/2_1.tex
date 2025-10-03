@@ -1,0 +1,80 @@
+\documentclass[]{exam}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{mathrsfs}
+\settextfont{XB Niloofar}
+\algrenewcommand{\algorithmicrequire}{\textbf{Input:}}
+\algrenewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+اگر $C = Res(C_1, C_2)$ باشد،
+با توجه به تمرین قبل $C$ را زمانی به $S$ اضافه می‌کنیم
+که هیج زیرمجموعه‌ای از $C$ در $S$ وجود نداشته باشد.
+هنگام اضافه کردن $C$ میتوانیم اعضایی از $S$ که $C$ زیرمجموعه آنهاست را نیز
+از $S$ حذف کنیم.
+بنابراین الگوریتم رزولوشن را می‌توانیم به صورت زیر بازنویسی کنیم:
+\begin{latin}
+    \begin{algorithm}[H]
+        \caption*{Resolution($S$)}
+        \begin{algorithmic}
+            \Require A non-emtpy set S of clauses
+            \Ensure S is statisfiable or unstatisfiable
+            \State $S_0$ = S
+            \Repeat
+            \State choose a new pairs of clashing clauses $C_1, C_2 \in S$
+            \State C := Res($C_1, C_2$)
+            \If {C is not trivial and there is no $A \in S$ s.t $A \subseteq C$}
+            \State $S_{i+1} := S_i$
+            \While {there is $A \in S$ s.t $C \subset A$}
+            \State remove A from S
+            \EndWhile
+            \EndIf
+            \Until{ c = $\square$ or all pairs of clashing clauses have been resolved}
+            \If{c = $\square$}
+            \State \Return statisfiable
+            \Else
+            \State \Return unstatisfiable
+            \EndIf
+        \end{algorithmic}
+    \end{algorithm}
+\end{latin}
+\end{document}

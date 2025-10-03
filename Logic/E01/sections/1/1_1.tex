@@ -1,0 +1,141 @@
+\documentclass[]{exam}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{mathrsfs}
+\settextfont{XB Niloofar}
+\algrenewcommand{\algorithmicrequire}{\textbf{Input:}}
+\algrenewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+
+در ابتدا این خاصیت را برای گزاره‌های اتمی ثابت می‌کنیم.
+به عبارت دیگر باید نشان دهیم هیچ گزاره‌ای چون
+$p \in \mathscr{P}$
+وجود ندارد که دنباله‌ای چون
+$\land \land$
+در آن ظاهر شود.
+
+در واقع چون
+$\land$
+عملگر بولی است، باید در طرفین آن گزاره های اتمی
+(یا فرمول ها)
+قرار گیرند. به دیگر سخن، در نمایش گرافی این فرمول، عملگر
+$\land$
+ریشه درخت 
+(یا زیردرختی)
+است که فرزندان راست و چپ آن گزاره‌ها
+(یا فرمول‌ها)
+هستند.
+
+مشخص است که به ازای هیچ گزاره‌ی اتمی‌ای چون
+$p \in \mathscr{P}$
+، 
+عبارت
+$\land \land p$
+این شرط را دارا نیست و 
+در دو طرف آن گزاره‌‌های اتمی
+(یا فرمول‌ها)
+قرار نگرفته اند. پس حکم درباره‌ی گزاره‌های اتمی ثابت است.
+حال گزاره‌ی ذیل را ثابت می‌کنیم:
+
+اگر
+$A \in \mathscr{F}$
+یک فرمول باشد که در آن
+$\land \land$
+ظاهر نشده است، 
+در
+$\neg A$
+نیز ظاهر نخواهد شد.\\
+در واقع با توجه به اینکه علامت نقیض صرفا در ریشه فرمول ظاهر می‌شود، تغییری در سلسله مراتب 
+ادات ایجاد نکرده و منجر به ظاهر شدن
+$\land \land$
+در فرمول 
+$\neg A$
+نمی‌شود.
+
+در نهایت گزاره‌‌ی
+«
+اگر
+$\land \land$
+در فرمول
+$A$
+و فرمول
+$B$
+ظاهر نشود، آنگاه در فرمول
+$A * B$
+که
+$* \in \{\land, \lor, \uparrow, \downarrow, \oplus\, \rightarrow, \leftrightarrow \}$
+نیز ظاهر نخواهد
+»
+را اثبات می‌کنیم.
+\\
+از آنجایی که این خاصیت در هیچ‌کدام از گزاره‌های 
+$A$
+و
+$B$
+ظاهر نشده، تنها حالت ممکن این است که فرمول ما به صورت 
+$A \land B$
+باشد و 
+در گراف مربوط به هر فرمول، یا در سمت چپ ترین برگ
+$B$
+عملگر
+$\land$
+یا در سمت راست ترین برگ
+$A$
+عملگر 
+$\land$
+جای خوش کرده باشد.
+که البته مثل روز روشن است که 
+اولا 
+$\land$
+علمگری بولی است و محتاج دو فرزند،
+و دوما در برگ های یک درخت فقط گزاره‌ها قرار می‌گیرند و نه ادات بولی. پس این فرض نیز باطل و حکم ثابت است.
+
+در نهایت با اثبات سه گزاره‌ی فوق به این نتیجه می‌رسیم که 
+$\land \land$
+در هیچ فرمولی در منطق گزاره‌ای پدیدار نخواهد شد.
+کسی چه می‌داند؟ شاید منطقی وجود دارد که
+$\land \land$
+در آن چشمک می‌زند. 
+
+
+\end{document}

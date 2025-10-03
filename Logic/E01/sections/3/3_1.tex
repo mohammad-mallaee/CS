@@ -1,0 +1,109 @@
+\documentclass[]{exam}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{caption}
+\usepackage{algpseudocodex}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{mathrsfs}
+\settextfont{XB Niloofar}
+\algrenewcommand{\algorithmicrequire}{\textbf{Input:}}
+\algrenewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+در ابتدا ثابت می‌کنیم که خاصیت فوق برای هر گزاره‌ی اتمی صادق است.
+اگر
+$p$
+گزاره‌ای اتمی باشد، می‌دانیم
+$Sub(p) = \{p\}$.
+پس در نتیجه تعداد اعضای این زیرفرمول متناهی است. یعنی
+$|Sub(A)| = |\{p\}| = 1$
+
+اکنون باید تحقیق کنیم که به ازای فرمولی چون
+$A \in \mathscr{F}$
+،
+اگر
+$Sub(A)$
+متناهی باشد، آنگاه
+$Sub(\neg A)$
+نیز متناهی است.
+\\
+فرضا تعداد زیرفرمول های
+$A$
+متناهی است. یعنی
+$|Sub(A)| = n, n \in \mathbb{N}$
+.
+حال داریم:
+$$Sub(\neg A) = Sub(A) \cup \{\neg A\}$$
+.
+پس
+$$|Sub(\neg A)| = n + 1$$
+که عددی است متناهی.
+در نتیجه حکم دوم نیز ثابت است.
+
+حال به اثبات حکم سوم می‌پردازیم:
+اگر 
+$A, B \in \mathscr{F}$
+فرمول هایی باشند که زیرفرمول‌های آنها متناهی باشد،
+آنگاه
+$$Sub(A * B) = Sub(A) \cup Sub(B) \cup \{A * B\}$$
+نیز متناهی است.
+\\
+فرض کنیم
+$$|Sub(A)| = n$$
+$$|Sub(B)| = m$$
+به صورتی که 
+$m,n \in \mathbb{N}$.
+در نتیجه 
+$$|Sub(A * B)| \le |n| + |m| + |1|$$
+چرا که در بدترین حالت،
+$A$
+و
+$B$
+هیچ اشتراکی ندارند و تعداد اعضای اجتماع آنها برابر با مجموع اعضای تک‌تک آنهاست. از آنجایی که 
+$m + n + 1$
+نیز متناهی است، پس
+$Sub(A * B)$
+نیز متناهی خواهد بود و حکم ثابت است.
+
+پس صورت کلی صادق و به ازای هر فرمول
+$A \in \mathscr{F}$
+داریم: 
+$Sub(A)$
+متناهی است.
+\end{document}
